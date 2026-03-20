@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glowth | AI Skin Coach</title>
+<meta name="description" content="Glowth is an AI skincare coach with skin analysis, routines, pricing plans, and personalized results.">
+<link rel="icon" type="image/png" href="./assests/logo.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+    html.js main h1,
+    html.js main h2
+    {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(6px);
+        transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+        will-change: opacity, transform, filter;
+    }
+
+    html.js main h1.is-visible,
+    html.js main h2.is-visible
+    {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html.js main h1,
+        html.js main h2 
+        {
+            opacity: 1;
+            transform: none;
+            filter: none;
+            transition: none;
+        }
+    }
+</style>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Plus Jakarta Sans",sans-serif;color:#1f1a32;background:#181818}.page{width:100%;margin:0;background:#efebff}.shell{width:min(1240px,calc(100% - 48px));margin:0 auto;padding:18px 24px 0}.section{padding:28px 0 36px}.hero{text-align:center;padding-top:10px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid rgba(92,72,176,.12);font:700 12px/1 Inter,sans-serif}.eyebrow:before{content:"New";padding:3px 7px;border-radius:999px;background:#111;color:#fff;font-size:10px}.hero h1{margin:22px auto 14px;max-width:680px;font-size:clamp(48px,7vw,72px);line-height:.92;letter-spacing:-.07em}.hero p{margin:0 auto;max-width:640px;color:#5e5a76;font:500 15px/1.8 Inter,sans-serif}.primary-btn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:14px 20px;border-radius:999px;background:linear-gradient(135deg,#5d43ff,#7f61ff);color:#fff;font:700 14px/1 Inter,sans-serif;box-shadow:0 16px 24px rgba(93,67,255,.24)}.primary-btn .dot{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#5d43ff;font-size:14px}.hero-frame{position:relative;margin-top:34px;padding:22px 18px 0;border-radius:28px;background:linear-gradient(180deg,#d6ccff,#cac0ff);border:1px solid rgba(114,92,208,.08);overflow:hidden}.hero-frame:before{content:"";position:absolute;inset:16px;border-radius:22px;border:1px solid rgba(255,255,255,.18)}.hero-image{position:relative;z-index:1;width:min(520px,100%);margin:0 auto}.tag{position:absolute;z-index:2;display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;color:#fff;font:700 12px/1 Inter,sans-serif;box-shadow:0 12px 20px rgba(0,0,0,.12)}.tag-red{left:450px;top:54%;background:#ff4b57}.tag-orange{right:450px;top:30%;background:#ff7a3c}.section-head{text-align:center;max-width:680px;margin:0 auto 28px}.section-head h2,.split-copy h2,.journey-copy h2,.feedback-title,.ready h2{margin:0 0 12px;font-size:clamp(36px,4vw,54px);line-height:.96;letter-spacing:-.06em}.section-head p,.split-copy p,.journey-item p,.feedback-quote,.plan-desc,.ready p{margin:0;color:#5d5a74;font:500 14px/1.75 Inter,sans-serif}.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.work-card,.plan-card,.phone-shot,.quote-card,.stop-image,.ready-stage{background:#fff;border:1px solid rgba(107,88,187,.08);border-radius:20px}.work-card{padding:12px}.art{aspect-ratio:1.22;border-radius:16px;overflow:hidden;background:#f7f3ff;margin-bottom:14px}.art img,.phone-shot img,.stop-image img,.ready-stage img{width:100%;height:100%;object-fit:cover}.work-card h3,.journey-item h3,.plan-name{margin:0 0 8px;font-size:24px;letter-spacing:-.04em}.work-card h4{margin:0 0 6px;font-size:21px;letter-spacing:-.04em}.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.journey-copy h2{max-width:300px}.journey-list{display:grid;gap:18px}.journey-item{display:grid;grid-template-columns:36px 1fr;gap:12px}.num{width:28px;height:28px;display:grid;place-items:center;border-radius:6px;background:#fff;font:700 11px/1 Inter,sans-serif;color:#5e57a0}.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}.phone-shot{padding:8px;background:#e8f7ff;border-radius:16px}.phone-shot.tall{background:#fff2e8}.phone-shot.blue{background:#eaf7ff}.phone-shot.graph{background:#fff}.phone-inner{border-radius:14px;overflow:hidden;border:1px solid rgba(31,26,50,.16);aspect-ratio:.62}.science-panel{padding:18px;border-radius:24px;background:rgba(255,255,255,.54)}.science-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;max-width:320px;margin:20px auto 0}.science-icon{aspect-ratio:1;border-radius:12px;box-shadow:0 10px 20px rgba(66,53,128,.12)}.science-icon:nth-child(1){background:linear-gradient(135deg,#ffcf53,#ff9654)}.science-icon:nth-child(2){background:linear-gradient(135deg,#8dd5ff,#59a9ff)}.science-icon:nth-child(3){background:linear-gradient(135deg,#ccd4df,#909db8)}.science-icon:nth-child(4){background:linear-gradient(135deg,#866eff,#5947d8)}.science-icon:nth-child(5){background:linear-gradient(135deg,#75ebff,#63c9a6)}.science-icon:nth-child(6){background:linear-gradient(135deg,#ff6d7d,#ff9364)}.science-icon:nth-child(7){background:linear-gradient(135deg,#b291ff,#7d6aff)}.science-icon:nth-child(8){background:linear-gradient(135deg,#3d7d7d,#245560)}.science-icon:nth-child(9){background:linear-gradient(135deg,#91da67,#f97558)}.science-icon:nth-child(10){background:linear-gradient(135deg,#83b5ff,#a06dff)}.science-arrow{position:relative;width:56px;height:56px;margin:86px auto 18px;border-radius:16px;background:linear-gradient(135deg,#0d0a21,#311a61 70%,#9f63ff);box-shadow:0 18px 26px rgba(71,44,140,.24)}.science-arrow:before{content:"";position:absolute;inset:12px;clip-path:polygon(0 100%,0 56%,48% 56%,48% 4%,100% 52%,48% 100%,48% 70%);background:#fff;transform:rotate(-22deg)}.science-lines{position:absolute;left:50%;transform:translateX(-50%);top:112px;width:320px;height:190px;pointer-events:none}.science-lines span{position:absolute;bottom:0;width:1px;background:linear-gradient(180deg,rgba(115,92,220,.14),rgba(115,92,220,.45));transform-origin:bottom center}.science-lines span:nth-child(1){left:42px;height:102px;transform:rotate(-42deg)}.science-lines span:nth-child(2){left:92px;height:120px;transform:rotate(-23deg)}.science-lines span:nth-child(3){left:132px;height:132px;transform:rotate(-8deg)}.science-lines span:nth-child(4){left:188px;height:132px;transform:rotate(8deg)}.science-lines span:nth-child(5){left:228px;height:120px;transform:rotate(23deg)}.science-lines span:nth-child(6){left:278px;height:102px;transform:rotate(42deg)}.dark-pill{display:inline-flex;align-items:center;justify-content:center;margin:4px 0 24px;padding:12px 18px;border-radius:999px;background:#1f1f22;color:#fff;font:600 12px/1 Inter,sans-serif;box-shadow:0 10px 20px rgba(0,0,0,.18)}.feedback{padding-top:16px}.quote-card{padding:16px 18px;background:transparent;border:none}.avatars{display:flex;gap:0;margin-bottom:16px}.avatar{width:30px;height:30px;border-radius:8px;margin-right:-8px;border:2px solid #efebff;background-size:cover;background-position:center}.feedback-title{max-width:380px}.feedback-quote{max-width:420px;color:#1f1a32;font-size:14px}.author{margin-top:18px;font:600 12px/1 Inter,sans-serif}.toggle{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0 18px;color:#6e6b86;font:500 12px/1 Inter,sans-serif}.switch{position:relative;width:34px;height:18px;border-radius:999px;background:#5d43ff}.switch:before{content:"";position:absolute;top:2px;left:18px;width:14px;height:14px;border-radius:50%;background:#fff}.discount{color:#5d43ff;font-weight:700}.plan-card{padding:16px 16px 14px;background:rgba(255,255,255,.72)}.plan-card.featured{transform:translateY(-2px)}.plan-box{padding:16px;border-radius:18px;background:#fff;box-shadow:0 10px 18px rgba(85,68,169,.08)}.plan-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.price{font-size:22px;font-weight:800;letter-spacing:-.04em}.price span{font-size:44px}.price small{font:500 12px/1 Inter,sans-serif;color:#5d5a74}.plan-desc{font-size:12px;line-height:1.6}.cta-bar{display:block;margin-top:16px;padding:13px;border-radius:999px;background:#151515;color:#fff;text-align:center;font:600 13px/1 Inter,sans-serif}.featured .cta-bar{background:linear-gradient(135deg,#5d43ff,#7c60ff)}.feature-list{display:grid;gap:8px;margin:16px 0 0;padding-left:15px;color:#1f1a32;font:500 12px/1.55 Inter,sans-serif}.feature-list li::marker{color:#1f1a32}.feature-list .muted{color:#9a98aa;text-decoration:line-through}.stop-image{padding:24px;background:rgba(255,255,255,.54)}.stop-image img{object-fit:contain;max-height:290px}.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;margin:24px 0 0;padding:0;list-style:none;font:500 12px/1.5 Inter,sans-serif;color:#1f1a32}.benefits li{position:relative;padding-left:16px}.benefits li:before{content:"->";position:absolute;left:0;top:0;color:#5d43ff;font-weight:700}.ready{text-align:center;padding-top:54px;background:linear-gradient(180deg,#fff 0%,#ddd0ff 18%,#c4b1ff 100%)}.store-row{display:flex;justify-content:center;gap:10px;margin-top:22px}.store{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#111;font:700 13px/1 Inter,sans-serif;box-shadow:0 10px 16px rgba(75,52,160,.14)}.ready-stage{margin-top:32px;border-radius:22px 22px 0 0;overflow:hidden;background:#1f1532}.ready-stage img{max-height:420px}.footer{display:grid;grid-template-columns:1.2fr .7fr .7fr;gap:28px;padding:18px 24px 26px;background:#111;color:#fff}.brand{display:flex;align-items:center;gap:10px;font-weight:700}.brand img{width:26px;height:26px}.footer small,.footer a{color:rgba(255,255,255,.72);font:500 12px/1.8 Inter,sans-serif}.socials{display:flex;gap:12px;margin-top:18px}.socials a{width:24px;height:24px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.12)}.footer h4{margin:0 0 12px;font:700 16px/1 Inter,sans-serif}.footer-links a{display:block}@media (max-width:980px){.cards-3,.phones,.footer,.split{grid-template-columns:1fr}.tag-red{left:18px}.tag-orange{right:18px}.hero h1{font-size:clamp(42px,11vw,62px)}.science-lines{display:none}.science-grid{max-width:none}}@media (max-width:640px){.page{width:100%}.shell{width:min(100%,calc(100% - 12px));padding:14px 14px 0}.section{padding:24px 0 30px}.hero-frame{padding:20px 10px 0}.hero-image{width:min(420px,100%)}.tag{font-size:11px;padding:7px 10px}.tag-red{left:10px;top:56%}.tag-orange{right:10px;top:32%}.cards-3,.phones,.science-grid,.benefits,.footer{grid-template-columns:1fr}.footer{padding:20px 16px 24px}.section-head h2,.split-copy h2,.journey-copy h2,.feedback-title,.ready h2{font-size:clamp(30px,11vw,40px)}}
+        :root {
+            --contact-panel: rgba(255, 255, 255, 0.96);
+            --contact-panel-soft: rgba(255, 255, 255, 0.92);
+            --contact-text: #211d38;
+            --contact-muted: #6b6684;
+            --contact-line: rgba(91, 74, 170, 0.14);
+            --contact-shadow: 0 28px 70px rgba(97, 78, 186, 0.16);
+            --contact-violet: #7a61ff;
+            --contact-violet-deep: #4c33d1;
+        }
+
+        .primary-btn,
+        .cta-bar {
+            border: 0;
+            border-radius: 999px;
+            font-family: "Inter", sans-serif;
+            font-weight: 800;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .primary-btn:hover,
+        .cta-bar:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--contact-violet-deep), var(--contact-violet), #9bd4ff);
+            box-shadow: 0 18px 36px rgba(103, 83, 231, 0.24);
+        }
+
+        .cta-bar {
+            background: #111216;
+            box-shadow: 0 14px 30px rgba(17, 19, 29, 0.18);
+        }
+
+        .featured .cta-bar {
+            background: linear-gradient(135deg, var(--contact-violet-deep), var(--contact-violet), #9bd4ff);
+            box-shadow: 0 18px 36px rgba(103, 83, 231, 0.24);
+        }
+
+        .work-card,
+        .plan-card,
+        .phone-shot,
+        .quote-card,
+        .stop-image,
+        .ready-stage,
+        .science-panel {
+            background: var(--contact-panel);
+            border: 1px solid var(--contact-line);
+            box-shadow: var(--contact-shadow);
+        }
+
+        .plan-card {
+            background: var(--contact-panel-soft);
+        }
+
+        .plan-box {
+            background: #ffffff;
+            box-shadow: none;
+        }
+
+        .phone-shot.tall,
+        .phone-shot.blue,
+        .phone-shot.graph {
+            background: var(--contact-panel);
+        }
+
+        .work-card h4,
+        .journey-item h3,
+        .plan-name,
+        .feedback-title,
+        .split-copy h2,
+        .journey-copy h2,
+        .section-head h2 {
+            color: var(--contact-text);
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        .work-card p,
+        .journey-item p,
+        .feedback-quote,
+        .plan-desc,
+        .feature-list,
+        .split-copy p,
+        .section-head p {
+            color: var(--contact-muted);
+            font-family: "Inter", sans-serif;
+        }
+
+        .feature-list li::marker {
+            color: var(--contact-text);
+        }
+
+        .price small,
+        .plan-desc,
+        .author {
+            color: var(--contact-muted);
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: #efebff;
+        }
+
+        .site-nav-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid transparent;
+            background: transparent;
+            transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+        }
+
+        .site-nav-header.is-scrolled {
+            background: rgba(247, 244, 255, 0.82);
+            border-bottom-color: rgba(108, 88, 194, 0.12);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 10px 30px rgba(108, 88, 194, 0.08);
+        }
+
+        .site-nav-menu {
+            border-top: 1px solid rgba(108, 88, 194, 0.12);
+            background: rgba(247, 244, 255, 0.94);
+            backdrop-filter: blur(18px);
+        }
+
+        .pricing-ref {
+            padding-top: 34px;
+            padding-bottom: 48px;
+        }
+
+        .pricing-ref .section-head {
+            margin-bottom: 26px;
+        }
+
+        .pricing-ref .section-head h2 {
+            font-size: clamp(38px, 4.2vw, 52px);
+            letter-spacing: -0.07em;
+        }
+
+        .pricing-ref .section-head p {
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .pricing-ref .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .pricing-ref .discount {
+            color: #5d43ff;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .billing-toggle {
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: center;
+            padding: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.76);
+            border: 1px solid rgba(115, 92, 220, 0.12);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 14px 28px rgba(103, 83, 177, 0.12);
+            overflow: hidden;
+        }
+
+        .billing-toggle-thumb {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            height: calc(100% - 8px);
+            border-radius: 999px;
+            background: linear-gradient(135deg, #6b55ff, #7d61ff, #5f46f0);
+            box-shadow: 0 12px 24px rgba(102, 76, 255, 0.26);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+
+        .billing-toggle.is-yearly .billing-toggle-thumb {
+            transform: translateX(100%);
+        }
+
+        .billing-toggle.is-animating .billing-toggle-thumb {
+            box-shadow: 0 18px 30px rgba(102, 76, 255, 0.32);
+        }
+
+        .billing-option {
+            position: relative;
+            z-index: 1;
+            min-width: 108px;
+            border: 0;
+            background: transparent;
+            padding: 12px 22px;
+            border-radius: 999px;
+            color: #6e6882;
+            cursor: pointer;
+            font: 700 13px/1 "Inter", sans-serif;
+            transition: color 0.25s ease, transform 0.18s ease;
+        }
+
+        .billing-option.is-active {
+            color: #fff;
+        }
+
+        .billing-option:active {
+            transform: scale(0.97);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            border-radius: 24px;
+            background: rgba(239, 234, 255, 0.62);
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.48);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
+        }
+
+        .pricing-card-inner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-radius: 24px;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .pricing-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 178px;
+            padding: 20px 18px 18px;
+            border-radius: 22px;
+            background: #ffffff;
+            border: 1px solid rgba(115, 92, 220, 0.08);
+            box-shadow: 0 16px 34px rgba(77, 57, 154, 0.12);
+        }
+
+        .pricing-plan-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .pricing-name {
+            margin: 0;
+            color: #111216;
+            font: 700 24px/1.1 "Plus Jakarta Sans", sans-serif;
+            letter-spacing: -0.05em;
+        }
+
+        .pricing-copy {
+            margin: 6px 0 0;
+            color: #4e4963;
+            font: 500 13px/1.58 "Inter", sans-serif;
+            max-width: 168px;
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            color: #111216;
+            white-space: nowrap;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            letter-spacing: -0.05em;
+            transition: opacity 0.18s ease, transform 0.18s ease, filter 0.18s ease;
+            will-change: opacity, transform, filter;
+        }
+
+        .pricing-price.is-changing {
+            opacity: 0;
+            transform: translateY(10px) scale(0.94);
+            filter: blur(5px);
+        }
+
+        .pricing-price.is-settled {
+            animation: price-reveal 0.34s ease;
+        }
+
+        @keyframes price-reveal {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.96);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .pricing-price .symbol,
+        .pricing-price .amount {
+            font-weight: 800;
+            line-height: 0.9;
+        }
+
+        .pricing-price .symbol {
+            font-size: 27px;
+            transform: translateY(-1px);
+        }
+
+        .pricing-price .amount {
+            font-size: 50px;
+        }
+
+        .pricing-price .unit {
+            margin-left: 4px;
+            padding-bottom: 5px;
+            color: #57526c;
+            font: 500 13px/1 "Inter", sans-serif;
+            letter-spacing: 0;
+        }
+
+        .pricing-button {
+            display: block;
+            margin-top: 18px;
+            border: 0;
+            border-radius: 999px;
+            padding: 16px 18px;
+            text-align: center;
+            color: #fff;
+            font: 700 15px/1 "Inter", sans-serif;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .pricing-button-dark {
+            background: linear-gradient(180deg, #2a2a2d, #111216);
+            box-shadow: 0 14px 24px rgba(17, 18, 22, 0.22);
+        }
+
+        .pricing-button-featured {
+            background: linear-gradient(135deg, #6b55ff, #7d61ff, #5f46f0);
+            box-shadow: 0 18px 28px rgba(102, 76, 255, 0.28);
+        }
+
+        .pricing-features {
+            flex: 1;
+            padding: 20px 18px 20px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.64);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+        }
+
+        .pricing-label {
+            margin: 0 0 10px;
+            color: #6a647f;
+            font: 500 12px/1.2 "Inter", sans-serif;
+        }
+
+        .pricing-list {
+            margin: 0;
+            padding-left: 16px;
+            display: grid;
+            gap: 8px;
+            color: #15161a;
+            font: 500 13px/1.58 "Inter", sans-serif;
+        }
+
+        .pricing-list li::marker {
+            color: #15161a;
+        }
+
+        .pricing-list .muted {
+            color: #a09bab;
+            text-decoration: line-through;
+        }
+
+        @media (max-width: 980px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .pricing-ref .toggle {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .billing-option {
+                min-width: 96px;
+                padding: 11px 18px;
+            }
+
+            .pricing-card-inner {
+                gap: 12px;
+            }
+
+            .pricing-plan-row {
+                gap: 8px;
+            }
+
+            .pricing-name {
+                font-size: 22px;
+            }
+
+            .pricing-copy {
+                font-size: 12px;
+            }
+
+            .pricing-price .symbol {
+                font-size: 24px;
+            }
+
+            .pricing-price .amount {
+                font-size: 44px;
+            }
+
+            .pricing-list {
+                font-size: 12px;
+            }
+        }
+</style>
+</head>
+<body>
+<header class="shared-ui site-nav-header">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="./main.html" class="flex items-center space-x-3" aria-label="Go to Glowth main page">
+            <img src="./assests/logo2.png" alt="Glowth Logo" class="h-10 w-auto">
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="./about.html" class="text-gray-600 hover:text-gray-900 transition">About</a>
+            <a href="./waitlist.html" class="text-gray-600 hover:text-gray-900 transition">Waitlist</a>
+            <a href="./waitlist.html" class="text-gray-600 hover:text-gray-900 transition">How it works</a>
+            <a href="./contact.html" class="text-gray-600 hover:text-gray-900 transition">Contact</a>
+        </div>
+        <div>
+            <a href="./waitlist.html" class="inline-block rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 px-6 py-2 text-sm font-medium text-white shadow-[0_12px_24px_rgba(93,67,255,0.22)] transition hover:-translate-y-0.5 hover:from-indigo-700 hover:to-violet-600">
+                Login now
+            </a>
+        </div>
+        <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+    <div id="mobileMenu" class="site-nav-menu hidden md:hidden">
+        <div class="px-6 py-4 space-y-3">
+            <a href="./about.html" class="block text-gray-600 hover:text-gray-900">About</a>
+            <a href="./waitlist.html" class="block text-gray-600 hover:text-gray-900">Waitlist</a>
+            <a href="./waitlist.html" class="block text-gray-600 hover:text-gray-900">How it works</a>
+            <a href="./contact.html" class="block text-gray-600 hover:text-gray-900">Contact</a>
+        </div>
+    </div>
+</header>
+<div class="page">
+<div class="shell">
+<section class="section hero">
+<div class="eyebrow">Personalized AI Skincare Coach</div>
+<h1><b>Level Up Your Skin<br>with AI Coach</b></h1>
+<p>Go beyond the surface with a deep analysis of your skin. Our AI diagnoses your skin from a photo to create your scientific product and diet plan.</p>
+<a class="primary-btn" href="./waitlist.html">Get Started - it's free <span class="dot">&gt;</span></a>
+<div class="hero-frame">
+<span class="tag tag-red">Redness</span>
+<span class="tag tag-orange">Skin Burn</span>
+<img class="hero-image" src="./assests/main_girl.png" alt="AI skin analysis model">
+</div>
+</section>
+<section class="section" id="how">
+<div class="section-head"><h2><b>How Glowth Works</b></h2><p>Glowth combines AI skin analysis, ingredient intelligence, and real-world factors to help you make smarter skincare decisions.</p></div>
+<div class="cards-3">
+<article class="work-card"><div class="art"><img src="./assests/glowth_work_img_1.png" alt="Upload and scan"></div><h4><b>Upload &amp; Scan</b></h4><p>Upload your photo and details. Glowth instantly analyzes your skin using AI.</p></article>
+<article class="work-card"><div class="art"><img src="./assests/glowth_work_img_2.png" alt="Get smart insights"></div><h4><b>Get Smart Insights</b></h4><p>We detect issues, ingredient clashes, and environmental impact on your skin.</p></article>
+<article class="work-card"><div class="art"><img src="./assests/glowth_work_img_3.png" alt="Act and improve"></div><h4><b>Act &amp; Improve</b></h4><p>Get personalized fixes, product suggestions, and track your skin progress over time.</p></article>
+</div>
+</section>
+<section class="section">
+<div class="split">
+<div class="journey-copy"><h2><b>Simplify Your Journey</b></h2><br><div class="journey-list"><article class="journey-item"><div class="num">01</div><div><h3>Dynamic Routine Prescription</h3><p>Our AI analyzes your skin across 12 clinical markers with 95% accuracy, identifying underlying issues before they become visible.</p></div></article><article class="journey-item"><div class="num">02</div><div><h3>Dynamic Routine Prescription</h3><p>Receive a daily regimen that adapts in real-time to local UV index, humidity, and skin-specific needs.</p></div></article><article class="journey-item"><div class="num">03</div><div><h3>Progress Validation &amp; Optimization</h3><p>See measurable results with weekly skin health reports while Glow Score improves over time.</p></div></article></div></div>
+<img src="./assests/simplify_img.png" alt="Pore score" size="large">
+</div>
+</section>
+
+<section class="section pricing-ref" id="pricing">
+<div class="section-head"><h2>Flexible pricing plans</h2><p>Choose a plan that grows with you. Start for free and upgrade anytime for more features and support.</p></div>
+<div class="toggle"><span>Monthly</span><span class="switch"></span><span>Yearly</span><span class="discount">27% OFF</span></div>
+<div class="pricing-grid">
+<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">Starter plan</h3><p class="pricing-copy">For beginners testing the water</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">0</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-dark" href="./waitlist.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li>1 AI Skin Scan / Week</li><li>Basic Routine Recommendation</li><li>Ingredient Safety Checker</li><li>Community Forum Access</li><li class="muted">Daily Progress Tracking</li><li class="muted">Real-time Weather/UV Sync</li></ul></div></div></article>
+<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">Glowth Pro</h3><p class="pricing-copy">For daily users seeking results</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">99</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-featured" href="./waitlist.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li><strong>Unlimited AI Skin Scans</strong></li><li><strong>Real-time Weather/UV Sync</strong></li><li><strong>Daily Progress Tracking</strong></li><li><strong>Priority AI Processing</strong></li><li><strong>24/7 Priority Support</strong></li><li class="muted">Dermatologist 1-on-1 Chat</li></ul></div></div></article>
+<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">The Expert</h3><p class="pricing-copy">For those wanting doctor advice</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">499</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-dark" href="./contact.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li>Everything in Pro +</li><li><strong>Dermatologist 1-on-1 Chat</strong></li><li>Internal Health &amp; Diet Plan</li><li>Family Sharing (Up to 4)</li><li>Monthly Medical Report</li><li>24/7 priority support</li></ul></div></div></article>
+</div>
+</section>
+
+</div>
+</div>
+<footer class="shared-ui bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="md:col-span-1">
+                <a href="./main.html" class="flex items-center space-x-3 mb-4 w-fit" aria-label="Go to Glowth main page">
+                    <img src="./assests/logo1.png" alt="Glowth Logo" class="h-10 w-auto">
+                </a>
+                <p class="text-gray-400 text-sm mb-6">Your AI-powered skincare coach</p>
+                <div>
+                    <p class="text-sm text-gray-400 mb-3">Follow us on:</p>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/sonalkumar03" target="_blank" rel="noreferrer" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="https://www.instagram.com/sonalkumar9123/" target="_blank" rel="noreferrer" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7zM17.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2z"/></svg></a>
+                        <a href="https://www.linkedin.com/in/sonalkumar01/" target="_blank" rel="noreferrer" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="./waitlist.html" class="hover:text-white transition">Home</a></li>
+                    <li><a href="./main.html" class="hover:text-white transition">Features</a></li>
+                    <li><a href="./main.html#pricing" class="hover:text-white transition">Pricing</a></li>
+                    <li><a href="./contact.html" class="hover:text-white transition">Download</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-4">All Pages</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="./about.html" class="hover:text-white transition">About us</a></li>
+                    <li><a href="./contact.html" class="hover:text-white transition">Contact us</a></li>
+                    <li><a href="./waitlist.html" class="hover:text-white transition">Waitlist</a></li>
+                    <li><a href="./main.html" class="hover:text-white transition">Main page</a></li>
+                    <li><a href="./main.html#how" class="hover:text-white transition">How it works</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-4">Support</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="mailto:hello@glowth.in" class="hover:text-white transition">hello@glowth.in</a></li>
+                    <li><a href="./contact.html" class="hover:text-white transition">Help Center</a></li>
+                    <li><a href="./contact.html" class="hover:text-white transition">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+            <p>&copy; 2026 Glowth. All rights reserved. Made with love for better skin.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+    }
+
+    function syncNavState() {
+        const header = document.querySelector('.site-nav-header');
+        if (!header) return;
+        header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }
+
+    syncNavState();
+    window.addEventListener('scroll', syncNavState, { passive: true });
+
+    (function initTitleReveal() {
+        const headings = document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6');
+        if (!headings.length) return;
+
+        const reveal = (heading) => heading.classList.add('is-visible');
+
+        if (!('IntersectionObserver' in window)) {
+            headings.forEach(reveal);
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries, io) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    reveal(entry.target);
+                    io.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.25,
+            rootMargin: '0px 0px -8% 0px',
+        });
+
+        headings.forEach((heading) => observer.observe(heading));
+    })();
+</script>
+</body>
+</html>
+

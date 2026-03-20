@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowth | Contact</title>
+    <meta name="description" content="Get in touch with Glowth for support, sales questions, partnerships, and skincare platform inquiries.">
+    <link rel="icon" type="image/png" href="./assests/logo1.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+        html.js main h1
+        {
+            opacity: 0;
+            transform: translateY(18px);
+            filter: blur(6px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+            will-change: opacity, transform, filter;
+        }
+
+        html.js main h1.is-visible
+        {
+            opacity: 1;
+            transform: none;
+            filter: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html.js main h1
+            {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                transition: none;
+            }
+        }
+    </style>
+    <style>
+        .shared-ui, .shared-ui * { font-family: 'Inter', sans-serif; }
+
+        :root {
+            --bg-top: #faf7ff;
+            --bg-mid: #c4b3ff;
+            --bg-soft: #efebfb;
+            --panel: rgba(255, 255, 255, 0.92);
+            --panel-strong: rgba(255, 255, 255, 0.96);
+            --text: #211d38;
+            --muted: #6b6684;
+            --line: rgba(91, 74, 170, 0.14);
+            --line-strong: rgba(91, 74, 170, 0.22);
+            --shadow: 0 28px 70px rgba(97, 78, 186, 0.16);
+            --violet: #7a61ff;
+            --violet-deep: #4c33d1;
+            --dark: #111216;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(160, 136, 255, 0.22), transparent 30%),
+                linear-gradient(180deg, var(--bg-top) 0%, #f4f0ff 10%, var(--bg-mid) 44%, #dfd7f7 69%, #121215 69%);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        button, input, textarea, select { font: inherit; }
+        .container { width: min(1140px, calc(100% - 88px)); margin: 0 auto; }
+
+        .site-nav-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid transparent;
+            background: transparent;
+            transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+        }
+
+        .site-nav-header.is-scrolled {
+            background: rgba(247, 244, 255, 0.82);
+            border-bottom-color: rgba(108, 88, 194, 0.12);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 10px 30px rgba(108, 88, 194, 0.08);
+        }
+
+        .site-nav-menu {
+            border-top: 1px solid rgba(108, 88, 194, 0.12);
+            background: rgba(247, 244, 255, 0.94);
+            backdrop-filter: blur(18px);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(248, 245, 255, 0.72);
+            border-bottom: 1px solid rgba(108, 88, 194, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .brand img { width: 126px; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 12px 20px;
+            font-weight: 800;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn.dark {
+            background: #11131d;
+            color: white;
+            box-shadow: 0 14px 30px rgba(17, 19, 29, 0.18);
+        }
+
+        .btn.primary {
+            border: 0;
+            color: white;
+            background: linear-gradient(135deg, var(--violet-deep), var(--violet), #9bd4ff);
+            box-shadow: 0 18px 36px rgba(103, 83, 231, 0.24);
+            cursor: pointer;
+        }
+
+        .contact-hero {
+            padding: 58px 0 76px;
+            text-align: center;
+        }
+
+        .hero-copy h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 4vw, 4.3rem);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+        }
+
+        .hero-copy p {
+            max-width: 760px;
+            margin: 18px auto 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .contact-layout {
+            margin-top: 38px;
+            display: grid;
+            gap: 24px;
+            justify-items: center;
+        }
+
+        .contact-card {
+            width: min(100%, 520px);
+            background: var(--panel-strong);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 26px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .field,
+        .field-full {
+            text-align: left;
+        }
+
+        .field-full { grid-column: 1 / -1; }
+
+        .field label,
+        .field-full label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--muted);
+        }
+
+        .contact-card input,
+        .contact-card textarea,
+        .contact-card select {
+            width: 100%;
+            border: 1px solid transparent;
+            background: #f1f2f8;
+            color: var(--text);
+            padding: 14px 16px;
+            border-radius: 18px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .contact-card textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-card input:focus,
+        .contact-card textarea:focus,
+        .contact-card select:focus {
+            outline: none;
+            border-color: rgba(87, 70, 195, 0.32);
+            box-shadow: 0 0 0 4px rgba(122, 97, 255, 0.12);
+            background: #ffffff;
+        }
+
+        .submit-wrap {
+            margin-top: 16px;
+        }
+
+        .submit-wrap .btn {
+            width: 100%;
+            min-height: 52px;
+        }
+
+        .fine-print {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .contact-meta {
+            width: min(100%, 520px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            text-align: left;
+        }
+
+        .meta-block h2 {
+            margin: 0 0 10px;
+            font-size: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-block p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.94rem;
+        }
+
+        .faq-section {
+            background: linear-gradient(180deg, rgba(244, 240, 255, 0.82), rgba(239, 235, 251, 0.96));
+            border-top: 1px solid rgba(96, 79, 177, 0.08);
+            padding: 78px 0 88px;
+        }
+
+        .section-head {
+            text-align: center;
+            max-width: 740px;
+            margin: 0 auto 32px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(2rem, 3.2vw, 3.2rem);
+            letter-spacing: -0.04em;
+        }
+
+        .section-head p {
+            margin: 14px 0 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .faq-list {
+            width: min(100%, 760px);
+            margin: 0 auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(109, 92, 194, 0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 14px 34px rgba(116, 97, 191, 0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: var(--text);
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: left;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .faq-icon {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            flex: 0 0 18px;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 14px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--muted);
+            transform: translate(-50%, -50%);
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+
+        .faq-icon::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .faq-item.open .faq-icon::after {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(90deg) scaleX(0.2);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.26s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 0 22px 20px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .site-footer {
+            background: #101014;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 34px 0 26px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr 0.8fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .footer-brand img {
+            width: 114px;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand p,
+        .footer-list a {
+            color: rgba(255, 255, 255, 0.64);
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-list h3 {
+            margin: 0 0 14px;
+            font-size: 0.95rem;
+        }
+
+        .footer-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .socials a {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.88);
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .status-text {
+            margin: 16px 0 0;
+            font-size: 0.9rem;
+            color: var(--violet-deep);
+            font-weight: 700;
+        }
+
+        @media (max-width: 760px) {
+            .container { width: min(100%, calc(100% - 34px)); }
+            .nav-links { display: none; }
+            .contact-hero { padding-top: 42px; }
+            .contact-card { padding: 20px; }
+            .form-grid,
+            .contact-meta,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-copy p { font-size: 0.96rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="shared-ui site-nav-header">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="./main.html" class="flex items-center space-x-3">
+                <img src="./assests/logo2.png" alt="Glowth Logo" class="h-10 w-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="./about.html" class="text-gray-600 hover:text-gray-900 transition">About</a>
+                <a href="./waitlist.html" class="text-gray-600 hover:text-gray-900 transition">Waitlist</a>
+                <a href="./waitlist.html" class="text-gray-600 hover:text-gray-900 transition">How it works</a>
+                <a href="./contact.html" class="text-gray-600 hover:text-gray-900 transition">Contact</a>
+            </div>
+            <div>
+                <a href="./waitlist.html" class="bg-gray-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition inline-block">
+                    Login now
+                </a>
+            </div>
+            <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobileMenu" class="site-nav-menu hidden md:hidden">
+            <div class="px-6 py-4 space-y-3">
+                <a href="./about.html" class="block text-gray-600 hover:text-gray-900">About</a>
+                <a href="./waitlist.html" class="block text-gray-600 hover:text-gray-900">Waitlist</a>
+                <a href="./waitlist.html" class="block text-gray-600 hover:text-gray-900">How it works</a>
+                <a href="./contact.html" class="block text-gray-600 hover:text-gray-900">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <div class="hero-copy">
+                    <h1>Get in touch with us</h1>
+                    <p>
+                        Have questions, need help, or want to discuss how Glowth can support your users and skincare journey?
+                        We are only one message away.
+                    </p>
+                </div>
+
+                <div class="contact-layout">
+                    <div class="contact-card">
+                        <form id="contactForm">
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label for="firstName">Full name</label>
+                                    <input id="firstName" name="firstName" type="text" placeholder="Full name" required>
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input id="email" name="email" type="email" placeholder="Email address" required>
+                                </div>
+                                <div class="field">
+                                    <label for="company">Company</label>
+                                    <input id="company" name="company" type="text" placeholder="Company name">
+                                </div>
+                                <div class="field">
+                                    <label for="phone">Phone</label>
+                                    <input id="phone" name="phone" type="tel" placeholder="Phone number">
+                                </div>
+                                <div class="field field-full">
+                                    <label for="category">Category</label>
+                                    <select id="category" name="category">
+                                        <option>General inquiry</option>
+                                        <option>Support</option>
+                                        <option>Sales</option>
+                                        <option>Partnership</option>
+                                    </select>
+                                </div>
+                                <div class="field-full">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" placeholder="Share your message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="submit-wrap">
+                                <button class="btn primary" type="submit">Send</button>
+                            </div>
+                            <p class="fine-print">By contacting us, you agree that Glowth may use your details to respond to your request.</p>
+                            <p class="status-text" id="formStatus" hidden>Thanks, your message has been prepared.</p>
+                        </form>
+                    </div>
+
+                    <div class="contact-meta">
+                        <div class="meta-block">
+                            <h2>Support</h2>
+                            <p>Need product help or feedback? Reach out and we will point you in the right direction.</p>
+                            <p><strong>support@glowth.in</strong></p>
+                        </div>
+                        <div class="meta-block">
+                            <h2>Sales</h2>
+                            <p>Interested in partnerships, early access, or tailored skincare workflows for your users?</p>
+                            <p><strong>sales@glowth.in</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Frequently asked questions</h2>
+                    <p>Find quick answers to common questions about Glowth.</p>
+                </div>
+
+                <div class="faq-list">
+                    <article class="faq-item open">
+                        <button class="faq-question" type="button" aria-expanded="true">
+                            <span>How does Glowth analyze my skin?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Glowth uses image-based signals, routine context, and lifestyle inputs to surface patterns like redness, dryness, and consistency risks.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Do I need a dermatologist to use Glowth?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No. Glowth is built to make skincare guidance easier to understand, while still encouraging professional care when your situation needs it.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Can Glowth support teams or clinics?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. We can discuss early partnership workflows for clinics, skincare consultants, or communities that want more personalized guidance.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>How long does it take to hear back?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Most inquiries can be reviewed within one to two business days, depending on whether the request is support, sales, or partnership related.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Is my personal data kept private?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. Your information should only be used to review and respond to your message, and any production workflow can be paired with a dedicated privacy policy.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="shared-ui bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="./assests/logo1.png" alt="Glowth Logo" class="h-10 w-auto">
+                    </div>
+                    <p class="text-gray-400 text-sm mb-6">Your AI-powered skincare coach</p>
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3">Follow us on:</p>
+                        <div class="flex space-x-4">
+                            <a href="https://x.com/sonalkumar03" target="_blank" rel="noreferrer" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                            <a href="https://www.instagram.com/sonalkumar9123/" target="_blank" rel="noreferrer" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7zM17.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2z"/></svg></a>
+                            <a href="https://www.linkedin.com/in/sonalkumar01/" target="_blank" rel="noreferrer" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="./waitlist.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="./main.html" class="hover:text-white transition">Features</a></li>
+                        <li><a href="./main.html#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition">Download</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">All Pages</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="./about.html" class="hover:text-white transition">About us</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition">Contact us</a></li>
+                        <li><a href="./waitlist.html" class="hover:text-white transition">Waitlist</a></li>
+                        <li><a href="./main.html" class="hover:text-white transition">Main page</a></li>
+                        <li><a href="./main.html#how" class="hover:text-white transition">How it works</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="mailto:hello@glowth.in" class="hover:text-white transition">hello@glowth.in</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition">Help Center</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+                <p>&copy; 2026 Glowth. All rights reserved. Made with love for better skin.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function syncNavState() {
+            const header = document.querySelector('.site-nav-header');
+            if (!header) return;
+            header.classList.toggle('is-scrolled', window.scrollY > 8);
+        }
+
+        syncNavState();
+        window.addEventListener('scroll', syncNavState, { passive: true });
+
+        (function initTitleReveal() {
+            const headings = document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6');
+            if (!headings.length) return;
+
+            const reveal = (heading) => heading.classList.add('is-visible');
+
+            if (!('IntersectionObserver' in window)) {
+                headings.forEach(reveal);
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, io) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        reveal(entry.target);
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.25,
+                rootMargin: '0px 0px -8% 0px',
+            });
+
+            headings.forEach((heading) => observer.observe(heading));
+        })();
+
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+            const button = item.querySelector(".faq-question");
+            const answer = item.querySelector(".faq-answer");
+
+            if (item.classList.contains("open")) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+
+            button.addEventListener("click", () => {
+                const isOpen = item.classList.contains("open");
+
+                faqItems.forEach((entry) => {
+                    entry.classList.remove("open");
+                    entry.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+                    entry.querySelector(".faq-answer").style.maxHeight = null;
+                });
+
+                if (!isOpen) {
+                    item.classList.add("open");
+                    button.setAttribute("aria-expanded", "true");
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        const contactForm = document.getElementById("contactForm");
+        const formStatus = document.getElementById("formStatus");
+
+        contactForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            formStatus.hidden = false;
+        });
+    </script>
+</body>
+</html>
+
+
