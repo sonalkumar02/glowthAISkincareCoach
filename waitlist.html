@@ -251,6 +251,59 @@ button,input{font:inherit}
             waitlistForm.reset();
         });
     }
+
+
+    // ===== WEBHOOK INTEGRATION =====
+const waitlistForm = document.getElementById('waitlistForm');
+const waitlistStatus = document.getElementById('waitlistStatus');
+const submitBtn = waitlistForm?.querySelector('button[type="submit"]');
+
+if (waitlistForm && waitlistStatus && submitBtn) {
+    waitlistForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const emailInput = document.getElementById('email');
+        const email = emailInput.value;
+        
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Joining...';
+        
+        try {
+            // Send to n8n webhook on Render
+            const webhookURL = 'https://glowth.onrender.com/webhook/waitlist';
+            
+            const response = await fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    source: 'website',
+                    page: 'waitlist'
+                })
+            });
+            
+            if (response.ok) {
+                // Show success message
+                waitlistStatus.hidden = false;
+                waitlistForm.reset();
+                submitBtn.textContent = "✓ You're on the list!";
+                submitBtn.style.background = 'linear-gradient(180deg, #10b981 0%, #059669 100%)';
+            } else {
+                throw new Error('Failed to join waitlist');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            alert('Oops! Something went wrong. Please try again or email us at hello@glowth.in');
+        }
+    });
+}
 </script>
 </body>
 </html>
