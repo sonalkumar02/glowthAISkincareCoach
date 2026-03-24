@@ -272,7 +272,7 @@ if (waitlistForm && waitlistStatus && submitBtn) {
         
         try {
             // Send to n8n webhook on Render
-            const webhookURL = 'https://glowth.onrender.com/webhook/waitlist';
+            const webhookURL = 'https://glowth.onrender.com/webhook/webhook/waitlist';
             
             const response = await fetch(webhookURL, {
                 method: 'POST',
