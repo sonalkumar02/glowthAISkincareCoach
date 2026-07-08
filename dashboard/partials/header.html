@@ -1,0 +1,171 @@
+<template id="dashboard-sidebar-template">
+  <aside class="dashboard-sidebar" id="dashboardSidebar">
+    <a class="sidebar-brand" href="overview.html" aria-label="Glowth dashboard home">
+      <span class="sidebar-brand-mark">
+        <img src="../assests/logo2.png" alt="Glowth logo">
+      </span>
+    </a>
+
+    <nav aria-label="Dashboard navigation">
+      <ul class="sidebar-nav">
+        <li><a href="overview.html" class="sidebar-nav-link" data-nav="overview" aria-label="Overview"><span class="sidebar-nav-icon" aria-hidden="true"></span><span class="sidebar-nav-label">Overview</span></a></li>
+        <li><a href="routine.html" class="sidebar-nav-link" data-nav="routine" aria-label="Routine"><span class="sidebar-nav-icon" aria-hidden="true"></span><span class="sidebar-nav-label">Routine</span></a></li>
+        <li><a href="recommendations.html" class="sidebar-nav-link" data-nav="recommendations" aria-label="Recommendations"><span class="sidebar-nav-icon" aria-hidden="true"></span><span class="sidebar-nav-label">Products</span></a></li>
+        <li><a href="progress.html" class="sidebar-nav-link" data-nav="progress" aria-label="Progress"><span class="sidebar-nav-icon" aria-hidden="true"></span><span class="sidebar-nav-label">Progress</span></a></li>
+        <li><a href="profile.html" class="sidebar-nav-link" data-nav="profile" aria-label="Profile"><span class="sidebar-nav-icon" aria-hidden="true"></span><span class="sidebar-nav-label">Profile</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="dashboard-overlay" data-dashboard-overlay></div>
+</template>
+
+<template id="dashboard-topbar-template">
+  <header class="dashboard-topbar">
+    <div class="dashboard-topbar-copy">
+      <button class="dashboard-mobile-trigger" type="button" onclick="toggleMobileMenu()" aria-controls="dashboardSidebar" aria-expanded="false">Menu</button>
+      <div>
+        <h1 class="dashboard-title" data-dashboard-title>Overview</h1>
+        <p class="dashboard-subtitle" data-dashboard-subtitle>Live skin analysis, routine guidance, recommendations, and progress in one workspace.</p>
+      </div>
+    </div>
+
+    <div class="dashboard-actions">
+      <span class="dashboard-chip" data-dashboard-chip>Live sync</span>
+      <div class="streak-widget" id="streakWidget">
+        <button class="streak-trigger" type="button" data-streak-trigger aria-label="Open streak details" aria-expanded="false">
+          <span aria-hidden="true">🔥</span>
+          <strong id="header-streak-count">7</strong>
+        </button>
+        <div class="streak-popover" data-streak-popover hidden>
+          <div class="streak-popover__head">
+
+            <span class="streak-popover__icon">
+              🔥
+            </span>
+
+            <div>
+
+              <strong>
+                <span id="header-streak-days">
+                  1 day
+                </span>
+                streak
+              </strong>
+
+              <p id="streak-motivation">
+                  2 more scans to beat last week
+              </p>
+
+              <div class="streak-progress">
+
+            <div class="streak-progress-bar">
+
+              <div
+                class="streak-progress-fill"
+                id="streak-progress-fill"
+              ></div>
+
+            </div>
+
+            <p id="streak-progress-text">
+              1 / 10 scans completed
+            </p>
+
+          </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- WEEK CALENDAR -->
+
+          <div class="streak-week">
+
+            <button class="streak-day active">
+              <span>M</span>
+            </button>
+
+            <button class="streak-day">
+              <span>T</span>
+            </button>
+
+            <button class="streak-day">
+              <span>W</span>
+            </button>
+
+            <button class="streak-day">
+              <span>T</span>
+            </button>
+
+            <button class="streak-day">
+              <span>F</span>
+            </button>
+
+            <button class="streak-day">
+              <span>S</span>
+            </button>
+
+            <button class="streak-day">
+              <span>S</span>
+            </button>
+
+          </div>
+
+
+
+          <!-- TARGET -->
+
+          <div class="streak-targets">
+
+            <button
+              class="streak-target active"
+              data-streak-target="10"
+            >
+              10 days
+            </button>
+
+            <button
+              class="streak-target"
+              data-streak-target="15"
+            >
+              15 days
+            </button>
+
+            <button
+              class="streak-target"
+              data-streak-target="20"
+            >
+              20 days
+            </button>
+
+            <button
+              class="streak-target"
+              data-streak-target="30"
+            >
+              30 days
+            </button>
+
+          </div>
+
+
+
+          
+        </div>
+      </div>
+      <a href="../contact.html" class="dashboard-button dashboard-button-secondary dashboard-scan-action" data-scan-trigger>Start scan</a>
+      <div class="user-menu" id="userMenu">
+        <button class="user-menu-trigger" type="button" onclick="toggleUserMenu()" aria-label="Open user menu" aria-expanded="false">
+          <span class="user-avatar" data-user-avatar>GU</span>
+        </button>
+        <div class="user-menu-dropdown">
+          <a href="profile.html" class="user-menu-item">Profile</a>
+          <a href="setting.html" class="user-menu-item">Settings</a>
+          <a href="#" class="user-menu-item" onclick="logout(); return false;">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>

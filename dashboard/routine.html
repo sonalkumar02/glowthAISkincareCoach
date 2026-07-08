@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth routine dashboard with morning and evening skin care steps.">
+  <title>Routine | Glowth</title>
+  <link rel="icon" type="image/png" href="../assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-page scan-locked" data-dashboard-page="routine" data-scan-state="locked">
+  <div class="dashboard-shell">
+    <div data-dashboard-sidebar></div>
+
+    <main class="dashboard-main">
+      <div data-dashboard-header></div>
+
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Routine builder</span>
+          <h2>A calm AM and PM flow, shaped around your skin.</h2>
+          <p>Glowth arranges the steps so the routine feels useful, not crowded. Each product has a job and a reason.</p>
+          <div class="hero-actions">
+            <a href="#morning-card" class="dashboard-button dashboard-button-primary">Complete next step</a>
+            <a href="recommendations.html" class="dashboard-button dashboard-button-secondary">View products</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-board">
+            <div class="hero-board__top">
+              <span class="hero-badge">AM / PM flow</span>
+              <span class="hero-badge hero-badge--soft"><span class="scan-value">5 steps ready</span></span>
+            </div>
+
+            <div class="routine-rail" id="routine-morning">
+              
+            </div>
+
+            <div class="routine-proof">
+              <div><strong>2 of 5</strong><span>steps complete</span></div>
+              <div class="routine-proof-track"><span style="--fill: 40%;"></span></div>
+              <p>Next: hydrating serum, 30 seconds</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-metrics" aria-label="Routine summary">
+        <a class="metric-card accent-lavender" href="#morning-card">
+          <p class="metric-label">Morning steps</p>
+          <h2 class="metric-value"><span class="scan-value">2</span></h2>
+          <div class="metric-track"><span style="--fill: 92%;"></span></div>
+          <p class="metric-detail">Fast, low-friction steps that keep the skin calm.</p>
+        </a>
+        <a class="metric-card accent-cyan" href="#evening-card">
+          <p class="metric-label">Evening steps</p>
+          <h2 class="metric-value"><span class="scan-value">3</span></h2>
+          <div class="metric-track"><span style="--fill: 78%;"></span></div>
+          <p class="metric-detail">Treatment and recovery stay in the right order.</p>
+        </a>
+        <a class="metric-card accent-blue" href="#logic-card">
+          <p class="metric-label">Adherence</p>
+          <h2 class="metric-value"><span class="scan-value">88%</span></h2>
+          <div class="metric-track"><span style="--fill: 88%;"></span></div>
+          <p class="metric-detail">The plan stays realistic enough to keep up with.</p>
+        </a>
+        <a class="metric-card accent-rose" href="#actions-card">
+          <p class="metric-label">Active steps</p>
+          <h2 class="metric-value"><span class="scan-value">5</span></h2>
+          <div class="metric-track"><span style="--fill: 64%;"></span></div>
+          <p class="metric-detail">Every step has a clear role in the routine flow.</p>
+        </a>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-card span-8" id="morning-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Morning routine</span>
+              <h3 class="card-title">A quick reset before the day starts</h3>
+              <p class="card-copy">The morning path stays light, protective, and easy to repeat.</p>
+            </div>
+            <a class="card-open" href="recommendations.html">Open products</a>
+          </div>
+          <div class="routine-rail" id="routine-morning-list">
+            
+            
+          </div>
+          <button class="dashboard-button dashboard-button-primary step-complete-btn" type="button">Complete next step</button>
+        </article>
+
+        <a class="dashboard-card span-4" id="evening-card" href="progress.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Evening routine</span>
+              <h3 class="card-title">Repair mode for the skin and the streak</h3>
+              <p class="card-copy">The night path is where active care and recovery can work best.</p>
+            </div>
+            <span class="card-open">Open progress</span>
+          </div>
+          <div class="progress-ring">
+            <div>
+              <strong><span class="scan-value">88</span></strong>
+              <span>adherence</span>
+            </div>
+          </div>
+          <ul class="card-list" id="routine-evening-steps">
+            <li><span>Treatment</span><strong><span class="scan-value">Night only</span></strong></li>
+            <li><span>Barrier cream</span><strong><span class="scan-value">Last step</span></strong></li>
+            <li><span>Recovery</span><strong><span class="scan-value">Priority</span></strong></li>
+          </ul>
+        </a>
+
+        <a class="dashboard-card span-6" id="logic-card" href="recommendations.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Routine logic</span>
+              <h3 class="card-title">Why this order feels so natural</h3>
+              <p class="card-copy">Glowth arranges the steps around barrier support, comfort, and results.</p>
+            </div>
+            <span class="card-open">Open recommendations</span>
+          </div>
+          <ul class="card-list" id="routine-logic-steps">
+            <li><span>Analyze</span><strong><span class="scan-value">Match skin need</span></strong></li>
+            <li><span>Build</span><strong><span class="scan-value">Choose products</span></strong></li>
+            <li><span>Track</span><strong><span class="scan-value">Check adherence</span></strong></li>
+            <li><span>Adapt</span><strong><span class="scan-value">Update over time</span></strong></li>
+          </ul>
+        </a>
+
+        <a class="dashboard-card span-6" id="actions-card" href="setting.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Quick actions</span>
+              <h3 class="card-title">Simple changes when the routine needs to flex</h3>
+              <p class="card-copy">If the skin changes, the dashboard should make it easy to follow.</p>
+            </div>
+            <span class="card-open">Open settings</span>
+          </div>
+          <ul class="card-list" id="routine-actions">
+            <li><span>Reminders</span><strong><span class="scan-value">On</span></strong></li>
+            <li><span>Scan updates</span><strong><span class="scan-value">Ready</span></strong></li>
+            <li><span>Weekly summary</span><strong><span class="scan-value">Active</span></strong></li>
+            <li><span>Motion</span><strong><span class="scan-value">Soft</span></strong></li>
+          </ul>
+        </a>
+      </section>
+      <div data-dashboard-footer></div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard-layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/scan.js"></script>
+</body>
+</html>

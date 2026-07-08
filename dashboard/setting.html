@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth settings dashboard with notification, privacy, and display controls.">
+  <title>Settings | Glowth</title>
+  <link rel="icon" type="image/png" href="../assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-page scan-locked" data-dashboard-page="settings" data-scan-state="locked">
+  <div class="dashboard-shell">
+    <div data-dashboard-sidebar></div>
+
+    <main class="dashboard-main">
+
+      <section class="settings-shell">
+
+      <!-- PROFILE -->
+
+      <section class="settings-section">
+
+        <div class="settings-profile-card">
+
+          <div class="profile-glow"></div>
+
+          <div class="settings-profile-left">
+
+            <div class="settings-avatar-wrap">
+
+              <div class="settings-avatar">
+                S
+              </div>
+
+              <div class="ai-status-dot"></div>
+
+            </div>
+
+
+            <div class="settings-profile-copy">
+
+              <div class="profile-top-row">
+
+                <h2>Sonal</h2>
+
+                <span class="ai-badge">
+                  AI Active
+                </span>
+
+              </div>
+
+
+              <p class="profile-skin-type" >
+                Oily • Acne-prone • Sensitive barrier
+              </p>
+
+
+              <div class="profile-meta">
+
+                <span class="glow-streak">
+                  ✨ 7 day glow streak
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <button class="settings-link-button">
+
+            <span>Edit Profile</span>
+
+            <span>→</span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- AI ROUTINE -->
+
+      <section class="settings-section">
+
+        <h3 class="settings-section-title">
+          AI Routine
+        </h3>
+
+        <div class="settings-list">
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>☀️ Morning reminders</h4>
+
+              <p>
+                Start your day with your AI routine
+              </p>
+
+            </div>
+
+                        <div class="reminder-control">
+              <select class="settings-select reminder-time-select" data-reminder-time="morning" aria-label="Morning reminder time">
+                <option value="07:00:00">7:00 AM</option>
+                <option value="08:00:00" selected>8:00 AM</option>
+                <option value="09:00:00">9:00 AM</option>
+                <option value="10:00:00">10:00 AM</option>
+              </select>
+              <button class="ios-toggle active" data-setting="morning-reminders" aria-label="Toggle morning reminders"></button>
+            </div>
+
+          </div>
+
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🌙 Evening reminders</h4>
+
+              <p>
+                Stay consistent before bedtime
+              </p>
+
+            </div>
+
+                        <div class="reminder-control">
+              <select class="settings-select reminder-time-select" data-reminder-time="evening" aria-label="Evening reminder time">
+                <option value="20:00:00">8:00 PM</option>
+                <option value="21:00:00" selected>9:00 PM</option>
+                <option value="22:00:00">10:00 PM</option>
+                <option value="23:00:00">11:00 PM</option>
+              </select>
+              <button class="ios-toggle active" data-setting="evening-reminders" aria-label="Toggle evening reminders"></button>
+            </div>
+
+          </div>
+
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>📸 Weekly scan reminder</h4>
+
+              <p>
+                Weekly AI skin progress check
+              </p>
+
+            </div>
+
+                        <button class="ios-toggle" data-setting="weekly-scan" aria-label="Toggle weekly scan reminder"></button>
+
+          </div>
+
+                </div>
+
+        <p class="reminder-status" id="reminder-status" aria-live="polite">
+          Reminder changes save automatically.
+        </p>
+
+      </section>
+
+
+
+      <!-- GLOWTH EXPERIENCE -->
+
+      <section class="settings-section">
+
+        <h3 class="settings-section-title">
+          Glowth Experience
+        </h3>
+
+        <div class="settings-list">
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>✨ Soft glow animations</h4> 
+
+              <p>
+                Smooth calming app interactions
+              </p>
+
+            </div>
+
+            <button class="ios-toggle active" data-setting="soft-animations"></button>
+
+          </div>
+
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🎵 Haptic feedback</h4>
+
+              <p>
+                Tiny tactile responses during actions
+              </p>
+
+            </div>
+
+            <button class="ios-toggle" data-setting="haptic-feedback"></button>
+
+          </div>
+
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🌗 Dark mode</h4>
+
+              <p>
+                Easier on your eyes at night
+              </p>
+
+            </div>
+
+            <button class="ios-toggle" data-setting="dark-mode"></button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- PRIVACY -->
+
+      <section class="settings-section">
+
+        <h3 class="settings-section-title">
+          Privacy
+        </h3>
+
+        <div class="settings-list">
+
+          <a href="#" class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🔒 Private mode</h4>
+
+              <p>
+                Hide sensitive skin analysis data
+              </p>
+
+            </div>
+
+            <span class="settings-arrow">
+              →
+            </span>
+
+          </a>
+
+
+          <a href="#" class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>📤 Export my data</h4>
+
+              <p>
+                Download scans and AI recommendations
+              </p>
+
+            </div>
+
+            <span class="settings-arrow">
+              →
+            </span>
+
+          </a>
+
+
+          <a href="#" class="settings-item danger-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🗑 Delete scan history</h4>
+
+              <p>
+                Permanently remove saved scans
+              </p>
+
+            </div>
+
+            <span class="settings-arrow">
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- AI PERSONALIZATION -->
+
+      <section class="settings-section">
+
+        <h3 class="settings-section-title">
+          AI Personalization
+        </h3>
+
+        <div class="personality-grid">
+
+          <button class="personality-card active" data-personality="gentle">
+
+            <span>✨</span>
+
+            <strong>
+              Gentle Coach
+            </strong>
+
+            <p>
+              Calm and supportive skincare guidance
+            </p>
+
+          </button>
+
+
+          <button class="personality-card" data-personality="scientific">
+
+            <span>🧪</span>
+
+            <strong>
+              Scientific Expert
+            </strong>
+
+            <p>
+              Deep ingredient science and explanations
+            </p>
+
+          </button>
+
+
+          <button class="personality-card" data-personality="motivational">
+
+            <span>🔥</span>
+
+            <strong>
+              Motivational Friend
+            </strong>
+
+            <p>
+              Pushes you to stay consistent every day
+            </p>
+
+          </button>
+
+        </div>
+
+
+
+        <div class="settings-list ai-extra-list">
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🧠 AI Detail Level</h4>
+
+              <p>
+                Choose how detailed Glowth responses are
+              </p>
+
+            </div>
+
+            <select class="settings-select" data-setting="ai-detail-level">
+
+              <option>
+                Simple Tips
+              </option>
+
+              <option selected>
+                Balanced
+              </option>
+
+              <option>
+                Deep Science
+              </option>
+
+            </select>
+
+          </div>
+
+
+
+          <div class="settings-item">
+
+            <div class="settings-item-copy">
+
+              <h4>🎯 Main Skin Goal</h4>
+
+              <p>
+                Help AI prioritize your skincare journey
+              </p>
+
+            </div>
+
+            <select class="settings-select" data-setting="main-skin-goal">
+
+              <option>
+                Acne Control
+              </option>
+
+              <option selected>
+                Glow & Brightness
+              </option>
+
+              <option>
+                Barrier Repair
+              </option>
+
+              <option>
+                Hydration
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard-layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/scan.js"></script>
+</body>
+</html>

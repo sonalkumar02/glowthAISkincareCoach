@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth overview dashboard with live skin analysis, routines, recommendations, and progress.">
+  <title>Overview | Glowth</title>
+  <link rel="icon" type="image/png" href="../assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-page scan-locked" data-dashboard-page="overview" data-scan-state="locked">
+  <div class="dashboard-shell">
+    <div data-dashboard-sidebar></div>
+
+    <main class="dashboard-main">
+      <div data-dashboard-header></div>
+
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <h2>Your skin, translated into clear daily action.</h2>
+          <p>Your latest scan is translated into one clear next move: open the routine and finish the next step.</p>
+          <div class="hero-actions">
+            <a href="routine.html" class="dashboard-button dashboard-button-primary">Open routine</a>
+            <a href="progress.html" class="dashboard-button dashboard-button-secondary">Review progress</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-board">
+            <div class="hero-board__top">
+              <span class="hero-badge">AI skin analysis</span>
+              <span class="hero-badge hero-badge--soft">Updated today</span>
+            </div>
+
+            <div class="analysis-scene" aria-label="Skin analysis visualization">
+              <span class="analysis-node analysis-node--1"></span>
+              <span class="analysis-node analysis-node--2"></span>
+              <span class="analysis-node analysis-node--3"></span>
+              <span class="analysis-node analysis-node--4"></span>
+              <span class="analysis-link analysis-link--1"></span>
+              <span class="analysis-link analysis-link--2"></span>
+              <span class="analysis-link analysis-link--3"></span>
+              <div class="analysis-orb"></div>
+            </div>
+
+            <div class="hero-board__footer">
+              <div class="hero-board__stat"><strong><span class="scan-value" id="overview-skin-score">84</span></strong><span>Skin score</span></div>
+              <div class="hero-board__stat"><strong><span class="scan-value" id="overview-hydration">72%</span></strong><span>Hydration</span></div>
+              <div class="hero-board__stat"><strong><span class="scan-value" id="overview-acne">2</span></strong><span>Active acne</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="dashboard-metrics" aria-label="Dashboard summary">
+        <a class="metric-card accent-lavender" href="#analysis-card">
+          <p class="metric-label">Skin score</p>
+          <h2 class="metric-value"><span class="scan-value" id="overview-metric-skin-score">84</span></h2>
+          <div class="metric-track"><span style="--fill: 84%;"></span></div>
+          <p class="metric-detail">Strong hydration with barrier support and a calm acne profile.</p>
+        </a>
+        <a class="metric-card accent-cyan" href="#routine-card">
+          <p class="metric-label">Routine readiness</p>
+          <h2 class="metric-value"><span class="scan-value" id="overview-routine-readiness">91%</span></h2>
+          <div class="metric-track"><span style="--fill: 91%;"></span></div>
+          <p class="metric-detail">Your daily path is almost fully mapped out.</p>
+        </a>
+        <a class="metric-card accent-blue" href="#recommendations-card">
+          <p class="metric-label">Product matches</p>
+          <h2 class="metric-value"><span class="scan-value" id="overview-metric-product-matches">12</span></h2>
+          <div class="metric-track"><span style="--fill: 76%;"></span></div>
+          <p class="metric-detail">Barrier, brightening, and protection picks are ready.</p>
+        </a>
+        <span id="overview-metric-glow-streak" hidden>7 days</span>
+      </section>
+
+      <section class="dashboard-grid">
+        <a class="dashboard-card span-7" id="analysis-card" href="profile.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Analysis</span>
+              <h3 class="card-title">A clear snapshot of what your skin needs</h3>
+              <p class="card-copy">Hydration, oil, acne, pigmentation, and texture are translated into a single calm view.</p>
+            </div>
+            <span class="card-open">Open profile</span>
+          </div>
+          <ul class="card-list">
+            <li><span>Hydration</span><strong><span class="scan-value" id="overview-analysis-hydration">72%</span></strong></li>
+            <li><span>Oil balance</span><strong><span class="scan-value" id="overview-analysis-oil">68%</span></strong></li>
+            <li><span>Acne points</span><strong><span class="scan-value" id="overview-analysis-acne">2 low</span></strong></li>
+            <li><span>Pigmentation</span><strong><span class="scan-value" id="overview-analysis-pigmentation">10%</span></strong></li>
+          </ul>
+          
+        </a>
+
+        <a class="dashboard-card span-5" id="routine-card" href="routine.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Routine</span>
+              <h3 class="card-title">Morning and evening steps in one flow</h3>
+              <p class="card-copy">Glowth keeps the order calm, useful, and easy to follow.</p>
+            </div>
+            <span class="card-open">Open routine</span>
+          </div>
+          <div class="routine-rail" id="overview-routine-list">
+            
+          </div>
+        </a>
+
+        <a class="dashboard-card span-6" id="recommendations-card" href="recommendations.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Recommendations</span>
+              <h3 class="card-title">Curated products without the clutter</h3>
+              <p class="card-copy">Barrier repair, brightening, and daily protection all stay anchored to the scan.</p>
+            </div>
+            <span class="card-open">Open recommendations</span>
+          </div>
+          <div class="product-stack" id="overview-products">
+            
+          </div>
+        </a>
+
+        <a class="dashboard-card span-6" id="progress-card" href="progress.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Progress</span>
+              <h3 class="card-title">A live skin trend line that feels personal</h3>
+              <p class="card-copy">Track consistency, photo checkpoints, and visible improvement over time.</p>
+            </div>
+            <span class="card-open">Open progress</span>
+          </div>
+          <div class="progress-bars" aria-label="Weekly progress chart">
+            <div class="progress-bar" style="--bar: 28%;"><span></span><label>Mon</label></div>
+            <div class="progress-bar" style="--bar: 38%;"><span></span><label>Tue</label></div>
+            <div class="progress-bar" style="--bar: 48%;"><span></span><label>Wed</label></div>
+            <div class="progress-bar" style="--bar: 62%;"><span></span><label>Thu</label></div>
+            <div class="progress-bar" style="--bar: 74%;"><span></span><label>Fri</label></div>
+            <div class="progress-bar" style="--bar: 82%;"><span></span><label>Sat</label></div>
+            <div class="progress-bar" style="--bar: 90%;"><span></span><label>Sun</label></div>
+          </div>
+        </a>
+
+      </section>
+      <div data-dashboard-footer></div>
+    </main>
+  </div>
+
+
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard-layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/scan.js"></script>
+</body>
+</html>

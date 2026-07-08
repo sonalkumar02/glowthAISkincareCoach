@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth onboarding quiz for personal skin profile setup.">
+  <meta name="theme-color" content="#2f80ed">
+  <title>Skin Quiz | Glowth</title>
+  <link rel="icon" type="image/png" href="./assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/quiz.css">
+</head>
+<body class="quiz-page">
+  <main class="quiz-shell" aria-labelledby="quizTitle">
+    <section class="quiz-card" aria-live="polite">
+      <div class="quiz-card__top">
+        <span class="quiz-step" id="quizStep">Question 1 of 5</span>
+      </div>
+
+      <div class="quiz-progress" aria-hidden="true">
+        <span id="quizProgressBar"></span>
+      </div>
+
+      <div class="quiz-question" id="quizQuestionCard">
+        <span class="quiz-kicker" id="quizKicker">Skin profile</span>
+        <h1 id="quizTitle">Skin Type</h1>
+        <p id="quizPrompt">Choose the option that feels closest. You can safely choose "I don't know" if you are unsure.</p>
+        <div class="quiz-options" id="quizOptions"></div>
+      </div>
+
+      <p class="quiz-status" id="quizStatus" role="status"></p>
+    </section>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="./js/supabase.js"></script>
+  <script src="./js/quiz.js"></script>
+</body>
+</html>

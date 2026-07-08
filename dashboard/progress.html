@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth progress dashboard with scan history, trend tracking, and milestones.">
+  <title>Progress | Glowth</title>
+  <link rel="icon" type="image/png" href="../assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-page scan-locked" data-dashboard-page="progress" data-scan-state="locked">
+  <div class="dashboard-shell">
+    <div data-dashboard-sidebar></div>
+
+    <main class="dashboard-main">
+      <div data-dashboard-header></div>
+
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Progress tracking</span>
+          <h2>Watch the glow build over time.</h2>
+          <p>Weekly scans, before-and-after photos, and simple milestones make the change easy to feel and easy to see.</p>
+          <div class="hero-actions">
+            <a href="#before-after-card" class="dashboard-button dashboard-button-primary">Compare photos</a>
+            <a href="#milestone-card" class="dashboard-button dashboard-button-secondary">Edit milestone</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-board">
+            <div class="hero-board__top">
+              <span class="hero-badge">Trend overview</span>
+              <span class="hero-badge hero-badge--soft"><span class="scan-value">91% consistency</span></span>
+            </div>
+
+            <div class="progress-ring profile-progress-ring" id="profile-progress-ring">
+              <div>
+                <strong><span class="scan-value" id="profile-hero-progress-value">0</span>%</strong>
+                <span>daily improvement</span>
+              </div>
+            </div>
+
+            <div class="progress-bars profile-weekly-bars" id="profile-hero-weekly-chart"></div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-metrics" aria-label="Progress summary">
+        <a class="metric-card accent-lavender" href="#scan-progress-card">
+          <p class="metric-label">Scans</p>
+          <h2 class="metric-value"><span class="scan-value" id="profile-total-scans">0</span></h2>
+          <div class="metric-track"><span style="--fill: 0%;" id="profile-total-scans-track"></span></div>
+          <p class="metric-detail">Enough history to show a meaningful curve.</p>
+        </a>
+        <a class="metric-card accent-blue" href="#weekly-chart-card">
+          <p class="metric-label">Weekly average</p>
+          <h2 class="metric-value"><span class="scan-value" id="profile-weekly-average">0% avg</span></h2>
+          <div class="metric-track"><span style="--fill: 0%;"></span></div>
+          <p class="metric-detail">Missed days are visible so the habit stays honest.</p>
+        </a>
+        <a class="metric-card accent-rose" href="#before-after-card">
+          <p class="metric-label">Daily change</p>
+          <h2 class="metric-value"><span class="scan-value" id="profile-daily-change">0</span></h2>
+          <div class="metric-track"><span style="--fill: 64%;"></span></div>
+          <p class="metric-detail">A small but real shift worth keeping alive.</p>
+        </a>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-card span-6" id="scan-progress-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Daily progress</span>
+              <h3 class="card-title">A score that moves only when scans prove it</h3>
+              <p class="card-copy">The ring compares the latest scan with your previous scan, so it reflects actual progress.</p>
+            </div>
+            <span class="card-open">Daily</span>
+          </div>
+          <div class="profile-progress-panel">
+            <div class="progress-ring profile-progress-ring">
+              <div>
+                <strong><span class="scan-value" id="profile-progress-value">0</span>%</strong>
+                <span>daily improvement</span>
+              </div>
+            </div>
+            <ul class="card-list">
+              <li><span>Latest skin score</span><strong><span class="scan-value" id="profile-latest-score">--</span></strong></li>
+              <li><span>Previous score</span><strong><span class="scan-value" id="profile-previous-score">--</span></strong></li>
+              <li><span>Scan count</span><strong><span class="scan-value" id="profile-scan-count">0 scans</span></strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="dashboard-card span-6" id="weekly-chart-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Weekly chart</span>
+              <h3 class="card-title">Seven-day scan rhythm and improvement</h3>
+              <p class="card-copy">Missed scan days are marked clearly, because consistency matters as much as the score.</p>
+            </div>
+            <span class="card-open" id="profile-weekly-average-card">0% avg</span>
+          </div>
+          <div class="progress-bars profile-weekly-bars" id="profile-weekly-chart"></div>
+        </article>
+
+        <article class="dashboard-card span-7" id="before-after-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Before / After</span>
+              <h3 class="card-title">Compare the previous scan with the new one</h3>
+              <p class="card-copy">When you scan again, the older image becomes Before and the latest image becomes After.</p>
+            </div>
+            <span class="card-open">Scan compare</span>
+          </div>
+          <div class="photo-compare profile-photo-compare" aria-label="Before and after progress comparison">
+            <figure class="photo-proof profile-scan-photo">
+              <span>Before</span>
+              <img id="profile-before-photo" alt="Previous face scan">
+              <figcaption id="profile-before-caption">Previous scan will appear here.</figcaption>
+            </figure>
+            <figure class="photo-proof photo-proof--after profile-scan-photo">
+              <span>After</span>
+              <img id="profile-after-photo" alt="Latest face scan">
+              <figcaption id="profile-after-caption">Latest scan will appear here.</figcaption>
+            </figure>
+          </div>
+          <div class="profile-change-grid">
+            <section>
+              <h4>Change</h4>
+              <ul class="card-list" id="profile-change-list">
+                <li><span>Waiting for two scans</span><strong><span class="scan-value">Start</span></strong></li>
+              </ul>
+            </section>
+            <section>
+              <h4>Next</h4>
+              <ul class="card-list" id="profile-next-list">
+                <li><span>Complete today&apos;s scan</span><strong><span class="scan-value">Next goal</span></strong></li>
+              </ul>
+            </section>
+          </div>
+        </article>
+
+        <article class="dashboard-card span-5" id="timeline-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Timeline</span>
+              <h3 class="card-title">What changed across your latest scans</h3>
+              <p class="card-copy">This is the user&apos;s trust trail: what happened, when, and why Glowth changed the plan.</p>
+            </div>
+            <span class="card-open">History</span>
+          </div>
+          <div class="timeline-list" id="profile-timeline-list"></div>
+        </article>
+
+        <article class="dashboard-card span-12" id="milestone-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Milestones</span>
+              <h3 class="card-title">Let users choose the progress target they care about</h3>
+              <p class="card-copy">Different users value acne calm, hydration, tone, or consistency differently, so this target stays editable.</p>
+            </div>
+            <span class="card-open">Editable</span>
+          </div>
+          <form class="milestone-editor" id="profile-milestone-form">
+            <label>
+              Focus
+              <select id="profile-milestone-focus">
+                <option value="Clear acne">Clear acne</option>
+                <option value="Improve hydration">Improve hydration</option>
+                <option value="Even tone">Even tone</option>
+                <option value="Control oil">Control oil</option>
+                <option value="Build scan habit">Build scan habit</option>
+              </select>
+            </label>
+            <label>
+              Target
+              <input id="profile-milestone-target" type="text" value="Scan 5 times this week">
+            </label>
+            <button class="dashboard-button dashboard-button-primary" type="submit">Save milestone</button>
+          </form>
+          <ul class="card-list" id="profile-milestone-list">
+            <li><span>Current milestone</span><strong><span class="scan-value">Scan 5 times this week</span></strong></li>
+          </ul>
+        </article>
+      </section>
+      <div data-dashboard-footer></div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard-layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/scan.js"></script>
+</body>
+</html>

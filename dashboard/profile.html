@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth profile dashboard with personal skin identity and account details.">
+  <title>Profile | Glowth</title>
+  <link rel="icon" type="image/png" href="../assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-page scan-locked" data-dashboard-page="profile" data-scan-state="locked">
+  <div class="dashboard-shell">
+    <div data-dashboard-sidebar></div>
+
+    <main class="dashboard-main">
+      <div data-dashboard-header></div>
+
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Personal profile</span>
+          <h2>Your skin identity, tuned to the person behind it.</h2>
+          <p>Profile details, skin tendencies, and personal goals sit together so Glowth can personalize every routine and recommendation.</p>
+          <div class="hero-actions">
+            <button class="dashboard-button dashboard-button-primary" type="button" data-profile-edit>Edit profile</button>
+            <a href="#goals-card" class="dashboard-button dashboard-button-secondary">Review goals</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-board">
+            <div class="hero-board__top">
+              <span class="hero-badge">Identity core</span>
+              <span class="hero-badge hero-badge--soft">Updated with scan data</span>
+            </div>
+
+            <div class="profile-avatar-stage" aria-label="Profile avatar panel">
+              <div class="profile-avatar-core">
+                <div class="profile-avatar-mark avatar-large" data-user-avatar>G</div>
+                <strong data-user-name>Glowth User</strong>
+                <span><span class="scan-value" id="skin-type-value">Combination skin</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-metrics" aria-label="Profile summary">
+        <a class="metric-card accent-lavender" href="#identity-card">
+          <p class="metric-label">Skin type</p>
+          <h2 class="metric-value"><span class="scan-value" id="skin-type-metric-value">Combo</span></h2>
+          <div class="metric-track"><span style="--fill: 78%;"></span></div>
+          <p class="metric-detail">Oily in the center, calmer on the edges, and easy to upset without balance.</p>
+        </a>
+        <a class="metric-card accent-cyan" href="#goals-card">
+          <p class="metric-label">Concern focus</p>
+          <h2 class="metric-value"><span class="scan-value" id="concern-focus-metric-value">Acne + tone</span></h2>
+          <div class="metric-track"><span style="--fill: 72%;"></span></div>
+          <p class="metric-detail">Targeted care stays centered on clarity and brightness.</p>
+        </a>
+        <a class="metric-card accent-blue" href="#goals-card">
+          <p class="metric-label">Last scan</p>
+          <h2 class="metric-value"><span class="scan-value" id="last-scan-value">Today</span></h2>
+          <div class="metric-track"><span style="--fill: 90%;"></span></div>
+          <p class="metric-detail">Fresh input keeps the dashboard aligned with your skin right now.</p>
+        </a>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-card span-6" id="identity-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Identity</span>
+              <h3 class="card-title">Personal details that make Glowth feel like yours</h3>
+              <p class="card-copy">A light profile with the right context keeps the dashboard personal and useful.</p>
+            </div>
+            <button class="card-open card-open-button" type="button" data-profile-edit>Edit profile</button>
+          </div>
+          <section class="profile-photo-card" aria-label="Profile photo upload">
+            <div class="profile-photo-preview avatar-large" data-user-avatar data-profile-photo-preview>GU</div>
+            <div class="profile-photo-copy">
+              <h4>Profile Photo</h4>
+              <p>Upload your own image for a personal dashboard experience.</p>
+            </div>
+            <div class="profile-photo-actions">
+              <button class="dashboard-button dashboard-button-primary" type="button" data-photo-trigger>Upload Photo</button>
+              <button class="dashboard-button dashboard-button-secondary" type="button" data-photo-reset hidden>Use Initials</button>
+            </div>
+            <input class="profile-photo-input" type="file" accept="image/*" data-photo-input>
+          </section>
+
+          <dl class="info-list">
+            <div class="info-row"><dt>Name</dt><dd><span class="scan-value" data-user-name>Glowth User</span></dd></div>
+            <div class="info-row"><dt>Email</dt><dd><span class="scan-value" id="profile-email">Connected locally</span></dd></div>
+            <div class="info-row"><dt>Timezone</dt><dd><span class="scan-value" id="profile-timezone">Asia/Calcutta</span></dd></div>
+            <div class="info-row"><dt>Primary goal</dt><dd><span class="scan-value" id="profile-primary-goal">Clearer tone</span></dd></div>
+          </dl>
+        </article>
+
+        <a class="dashboard-card span-6" id="goals-card" href="routine.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Goals</span>
+              <h3 class="card-title">The routine is shaped around your goals</h3>
+              <p class="card-copy">Barrier support, acne care, and a softer glow stay at the center.</p>
+            </div>
+            <span class="card-open">Open routine</span>
+          </div>
+          <ul class="card-list">
+            <li><span>Barrier repair</span><strong><span class="scan-value">Priority</span></strong></li>
+            <li><span>Acne control</span><strong><span class="scan-value">Daily</span></strong></li>
+            <li><span>Brightening</span><strong><span class="scan-value">Weekly</span></strong></li>
+            <li><span>Sun defense</span><strong><span class="scan-value">Always</span></strong></li>
+          </ul>
+        </a>
+
+      </section>
+      <div data-dashboard-footer></div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard-layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/scan.js"></script>
+</body>
+</html>

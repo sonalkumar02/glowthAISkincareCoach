@@ -1,0 +1,31 @@
+﻿# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+secrets.txt
+*-secret.*
+*service-role*
+*service_role*
+
+# Dependencies/build output
+node_modules/
+dist/
+build/
+.vercel/
+.netlify/
+
+# Local/exported automation files. Keep n8n workflow exports out of GitHub.
+Daily Reminders*.json
+Environment Sync*.json
+*n8n*.json
+workflow-exports/
+
+# Old internal deployment notes contain backend setup details
+/README.md

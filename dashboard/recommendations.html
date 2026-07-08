@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glowth recommendations dashboard with curated products and ingredient safety.">
+  <title>Recommendations | Glowth</title>
+  <link rel="icon" type="image/png" href="../assests/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-page scan-locked" data-dashboard-page="recommendations" data-scan-state="locked">
+  <div class="dashboard-shell">
+    <div data-dashboard-sidebar></div>
+
+    <main class="dashboard-main">
+      <div data-dashboard-header></div>
+
+      <section class="dashboard-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Recommendations engine</span>
+          <h2>Products chosen for this skin, not the whole internet.</h2>
+          <p>Glowth combines the scan with barrier logic, ingredient safety, and daily environment cues to surface a tighter set of options.</p>
+          <div class="hero-actions">
+            <a href="routine.html" class="dashboard-button dashboard-button-primary">Add to routine</a>
+            <a href="progress.html" class="dashboard-button dashboard-button-secondary">Track change</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-board">
+            <div class="hero-board__top">
+              <span class="hero-badge" id="hero-badge-matched-products">Matched products</span>
+              <span class="hero-badge hero-badge--soft">Ingredient safe</span>
+            </div>
+
+            <div class="product-grid-preview" id="recommendation-products-grid">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-metrics" aria-label="Recommendation summary">
+        <a class="metric-card accent-lavender" href="#product-card">
+          <p class="metric-label">Product matches</p>
+          <h2 class="metric-value"><span class="scan-value" id="product-matches-metric-value">12</span></h2>
+          <div class="metric-track"><span style="--fill: 76%;"></span></div>
+          <p class="metric-detail">A focused shortlist that actually fits the scan.</p>
+        </a>
+        <a class="metric-card accent-cyan" href="#ingredient-card">
+          <p class="metric-label">Ingredient checks</p>
+          <h2 class="metric-value"><span class="scan-value" id="ingredient-checks-metric-value">4</span></h2>
+          <div class="metric-track"><span style="--fill: 64%;"></span></div>
+          <p class="metric-detail">Potential clashes and irritants stay visible.</p>
+        </a>
+        <a class="metric-card accent-blue" href="#lifestyle-card">
+          <p class="metric-label">Climate tips</p>
+          <h2 class="metric-value"><span class="scan-value" id="climate-tips-metric-value">3</span></h2>
+          <div class="metric-track"><span style="--fill: 58%;"></span></div>
+          <p class="metric-detail">Humidity, UV, and travel adjustments are baked in.</p>
+        </a>
+        <a class="metric-card accent-rose" href="#saved-card">
+          <p class="metric-label">Routine fit</p>
+          <h2 class="metric-value"><span class="scan-value">96%</span></h2>
+          <div class="metric-track"><span style="--fill: 96%;"></span></div>
+          <p class="metric-detail">The recommendations land cleanly inside the routine.</p>
+        </a>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-card span-8" id="product-card">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Products</span>
+              <h3 class="card-title">A smaller list with a stronger reason to buy</h3>
+              <p class="card-copy">The best matches stay connected to the routine, not separated from it.</p>
+            </div>
+            <span class="card-open">Open routine</span>
+          </div>
+          <div class="product-stack" id="recommendation-products-list">
+            
+          </div>
+        </article>
+
+        <a class="dashboard-card span-4" id="ingredient-card" href="profile.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Ingredient safety</span>
+              <h3 class="card-title">What to keep, watch, or avoid</h3>
+              <p class="card-copy">Ingredient logic stays visible so the routine feels safe as well as effective.</p>
+            </div>
+            <span class="card-open">Open profile</span>
+          </div>
+          <ul class="safe-list" id="ingredient-list">
+            <li><span>Niacinamide</span><strong><span class="scan-value">Keep</span></strong></li>
+            <li><span>Retinoids</span><strong><span class="scan-value">Watch</span></strong></li>
+            <li><span>Heavy fragrance</span><strong><span class="scan-value">Avoid</span></strong></li>
+            <li><span>Ceramides</span><strong><span class="scan-value">Keep</span></strong></li>
+          </ul>
+        </a>
+
+        <a class="dashboard-card span-6" id="lifestyle-card" href="../contact.html" data-scan-trigger>
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Lifestyle</span>
+              <h3 class="card-title">Daily adjustments based on the world around you</h3>
+              <p class="card-copy">Glowth can shift product emphasis when the weather or schedule changes.</p>
+            </div>
+            <span class="card-open">Ask for help</span>
+          </div>
+          <div class="display-chip-row" id="recommendation-lifestyle-chips">
+            <span class="display-chip">High UV</span>
+            <span class="display-chip">Dry office air</span>
+            <span class="display-chip">Travel day</span>
+            <span class="display-chip">Barrier focus</span>
+          </div>
+          <ul class="card-list">
+            <li><span>Sun defense</span><strong><span class="scan-value">Increase SPF</span></strong></li>
+            <li><span>Humidity</span><strong><span class="scan-value">Adjust texture</span></strong></li>
+            <li><span>Travel</span><strong><span class="scan-value">Keep routine light</span></strong></li>
+          </ul>
+        </a>
+
+        <a class="dashboard-card span-6" id="saved-card" href="overview.html">
+          <div class="card-head">
+            <div>
+              <span class="card-pill">Saved matches</span>
+              <h3 class="card-title">A small library of the products worth keeping</h3>
+              <p class="card-copy">Save the ones that fit so the routine can stay simple the next time you open it.</p>
+            </div>
+            <span class="card-open">Back to overview</span>
+          </div>
+          <ul class="card-list">
+            <li><span>Barrier repair cream</span><strong><span class="scan-value">Saved</span></strong></li>
+            <li><span>Brightening serum</span><strong><span class="scan-value">Saved</span></strong></li>
+            <li><span>Daily SPF shield</span><strong><span class="scan-value">Saved</span></strong></li>
+            <li><span>Extra cleanser</span><strong><span class="scan-value">Optional</span></strong></li>
+          </ul>
+        </a>
+      </section>
+      <div data-dashboard-footer></div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard-layout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/scan.js"></script>
+</body>
+</html>
