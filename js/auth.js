@@ -143,11 +143,13 @@ async function loginWithSupabase(email, password) {
 
   const identity = await findUserIdentityByEmail(user.email || email);
   if (identity) {
-    rememberUserIdentity({
-      email: identity.email,
-      userId: identity.userId,
-      name: identity.name
-    });
+    if (identity.email || identity.name) {
+      rememberUserIdentity({
+        email: user.email || identity.email,
+        userId: user.id,
+        name: identity.name || user.user_metadata?.name || buildDisplayName(user.email || email)
+      });
+    }
     localStorage.setItem('glowth_quiz_completed', 'true');
   }
 

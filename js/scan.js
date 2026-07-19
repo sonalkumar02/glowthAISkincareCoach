@@ -403,27 +403,29 @@
     return data?.id === userId;
   }
 
-  async function ensurePublicUserForAuth(authUser) {
-    if (!authUser?.id || !isUuid(authUser.id) || typeof supabaseClient === 'undefined') {
+  async function ensurePublicUserRecord(user = {}) {
+    const userId = user.id || user.user_id;
+    if (!isUuid(userId) || typeof supabaseClient === 'undefined') {
       return null;
     }
 
-    if (await publicUserExists(authUser.id)) {
+    if (await publicUserExists(userId)) {
       rememberResolvedUser({
-        id: authUser.id,
-        email: authUser.email,
-        name: authUser.user_metadata?.name
+        id: userId,
+        email: user.email,
+        name: user.name
       });
-      return authUser.id;
+      return userId;
     }
 
-    const fallbackName = authUser.user_metadata?.name || localStorage.getItem('glowth_user_name') || 'Glowth User';
+    const email = user.email || localStorage.getItem('glowth_user_email') || '';
+    const name = user.name || localStorage.getItem('glowth_user_name') || 'Glowth User';
     const { data, error } = await supabaseClient
       .from('users')
       .upsert({
-        id: authUser.id,
-        email: authUser.email || localStorage.getItem('glowth_user_email') || '',
-        name: fallbackName,
+        id: userId,
+        email,
+        name,
         location: localStorage.getItem('glowth_user_location') || 'India'
       }, { onConflict: 'id' })
       .select('id,email,name')
@@ -431,11 +433,23 @@
 
     if (error) {
       console.warn('[Glowth] users self-heal upsert failed:', error);
-      return null;
+      const existingId = await findUserIdByEmail(email);
+      if (existingId) {
+        return existingId;
+      }
+      throw new Error(`Could not link this account to the public users table: ${error.message || 'Supabase rejected the request'}`);
     }
 
     rememberResolvedUser(data);
     return data.id;
+  }
+
+  async function ensurePublicUserForAuth(authUser) {
+    return ensurePublicUserRecord({
+      id: authUser?.id,
+      email: authUser?.email,
+      name: authUser?.user_metadata?.name
+    });
   }
 
   async function resolveScanUserId() {
@@ -449,6 +463,17 @@
     const resolvedId = await findUserIdByEmail(email);
     if (resolvedId) {
       return resolvedId;
+    }
+
+    if (isUuid(storedUserId)) {
+      const ensuredStoredId = await ensurePublicUserRecord({
+        id: storedUserId,
+        email,
+        name: localStorage.getItem('glowth_user_name') || 'Glowth User'
+      });
+      if (ensuredStoredId) {
+        return ensuredStoredId;
+      }
     }
 
     if (typeof supabaseClient !== 'undefined' && supabaseClient.auth?.getUser) {
@@ -708,4 +733,5 @@ function launchFireCelebration() {
 }
 
 })();
+
 
