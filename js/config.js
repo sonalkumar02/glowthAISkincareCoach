@@ -1,7 +1,7 @@
 ﻿// js/config.js
 
 const GLOWTH = {
-  PROD_N8N: 'https://glowth.onrender.com',
+  PROD_N8N: 'https://automation.glowth.in',
   VAPID_PUBLIC_KEY: 'REPLACE_WITH_YOUR_WEB_PUSH_PUBLIC_KEY',
 
   get BASE() {
@@ -20,3 +20,4 @@ const GLOWTH = {
     return `${this.BASE}/${this.ENDPOINTS[endpoint]}`;
   }
 };
+
