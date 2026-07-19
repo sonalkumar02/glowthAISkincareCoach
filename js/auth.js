@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Glowth Authentication
  * Handle login, logout, and auth state
  */
@@ -253,17 +253,40 @@ async function signup(email, password) {
     });
 
     if (error) {
+      const message = String(error.message || '').toLowerCase();
+
+      if (message.includes('rate limit')) {
+        return {
+          success: false,
+          error: 'Too many signup attempts right now. Please wait a few minutes, then try again. If this email already has an account, switch to Log in.'
+        };
+      }
+
+      if (message.includes('already') || message.includes('registered')) {
+        return {
+          success: false,
+          error: 'This email already has a Glowth account. Please switch to Log in.'
+        };
+      }
+
       return { success: false, error: error.message || 'Could not create your account.' };
     }
 
     const user = data?.user;
     const session = data?.session;
 
-    if (!user?.id || !isUuid(user.id)) {
-      return { success: false, error: 'Account created, but login session is not ready. Please check your email and then log in.' };
+    if (!session) {
+      return {
+        success: false,
+        error: 'Account created. Please check your email to confirm it, then log in.'
+      };
     }
 
-    localStorage.setItem('auth_token', session?.access_token || `supabase-${Date.now()}`);
+    if (!user?.id || !isUuid(user.id)) {
+      return { success: false, error: 'Account created, but login session is not ready. Please log in again.' };
+    }
+
+    localStorage.setItem('auth_token', session.access_token || `supabase-${Date.now()}`);
     clearQuizData();
     rememberUserIdentity({
       email: user.email || email,
@@ -271,7 +294,7 @@ async function signup(email, password) {
       name: user.user_metadata?.name || buildDisplayName(user.email || email)
     });
 
-    return { success: true, confirmationRequired: !session };
+    return { success: true };
   } catch (error) {
     console.error('Signup error:', error);
     return { success: false, error: 'Signup service unavailable. Please try again later.' };
@@ -310,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
     redirectIfAuthenticated();
   }
 });
-// js/auth.js â€” add this
+// js/auth.js Ã¢â‚¬â€ add this
 async function submitOnboarding(formData) {
   const res = await fetch(`${GLOWTH_CONFIG.N8N_BASE}/onboarding`, {
     method: 'POST',
@@ -319,7 +342,7 @@ async function submitOnboarding(formData) {
       email: formData.email,
       name: formData.name,
       age: formData.age,              // number
-      location: formData.location,    // "Ludhiana" (no "India" suffix â€” workflow adds it)
+      location: formData.location,    // "Ludhiana" (no "India" suffix Ã¢â‚¬â€ workflow adds it)
       skinType: formData.skinType,    // "oily"|"dry"|"combination"|"sensitive"|"normal"
       concerns: formData.concerns,    // array: ["acne","pigmentation"]
       goals: formData.goals,          // array: ["clearer skin","even tone"]
@@ -328,10 +351,11 @@ async function submitOnboarding(formData) {
     })
   });
   const data = await res.json();
-  // data.user_id â†’ save to localStorage
+  // data.user_id Ã¢â€ â€™ save to localStorage
   localStorage.setItem('glowth_user_id', data.user_id);
   return data;
 }
+
 
 
 
