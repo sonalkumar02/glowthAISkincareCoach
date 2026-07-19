@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Glowth Authentication
  * Handle login, logout, and auth state
  */
@@ -228,7 +228,55 @@ async function login(email, password) {
   }
 }
 
+async function signup(email, password) {
+  if (!email || !password) {
+    return { success: false, error: 'Please enter your email and password.' };
+  }
 
+  if (password.length < 6) {
+    return { success: false, error: 'Password must be at least 6 characters.' };
+  }
+
+  if (typeof supabaseClient === 'undefined' || !supabaseClient.auth?.signUp) {
+    return { success: false, error: 'Signup is not configured yet.' };
+  }
+
+  try {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name: buildDisplayName(email)
+        }
+      }
+    });
+
+    if (error) {
+      return { success: false, error: error.message || 'Could not create your account.' };
+    }
+
+    const user = data?.user;
+    const session = data?.session;
+
+    if (!user?.id || !isUuid(user.id)) {
+      return { success: false, error: 'Account created, but login session is not ready. Please check your email and then log in.' };
+    }
+
+    localStorage.setItem('auth_token', session?.access_token || `supabase-${Date.now()}`);
+    clearQuizData();
+    rememberUserIdentity({
+      email: user.email || email,
+      userId: user.id,
+      name: user.user_metadata?.name || buildDisplayName(user.email || email)
+    });
+
+    return { success: true, confirmationRequired: !session };
+  } catch (error) {
+    console.error('Signup error:', error);
+    return { success: false, error: 'Signup service unavailable. Please try again later.' };
+  }
+}
 // Logout function
 function logout() {
   localStorage.removeItem('auth_token');
@@ -284,6 +332,7 @@ async function submitOnboarding(formData) {
   localStorage.setItem('glowth_user_id', data.user_id);
   return data;
 }
+
 
 
 

@@ -424,6 +424,19 @@
       text-decoration: underline;
     }
 
+    .auth-toggle {
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--violet);
+      font: 700 13px/1.5 "Inter", sans-serif;
+      cursor: pointer;
+    }
+
+    .auth-toggle:hover {
+      text-decoration: underline;
+    }
+
     .submit-btn {
       display: inline-flex;
       align-items: center;
@@ -574,11 +587,9 @@
           <a class="brand-link" href="./main.html" aria-label="Go to Glowth main page">
           </a>
 
-          <span class="eyebrow">Welcome back</span>
-          <h2>Log in</h2>
-          <p class="form-intro">
-            Use your Glowth account to continue where you left off.
-          </p>
+          <span class="eyebrow" id="authEyebrow">Welcome back</span>
+          <h2 id="authTitle">Log in</h2>
+          <p class="form-intro" id="authIntro">Use your Glowth account to continue where you left off.</p>
 
           <form id="loginForm" class="login-form" novalidate>
             <div class="field">
@@ -588,16 +599,16 @@
 
             <div class="field">
               <label for="password">Password</label>
-              <input id="password" name="password" type="password" placeholder="Your password" autocomplete="current-password" required>
+              <input id="password" name="password" type="password" placeholder="Your password" autocomplete="current-password" required minlength="6">
             </div>
 
             <div class="helper-row">
-              <span>Need access help?</span>
-              <a href="./contact.html">Contact support</a>
+              <span id="authHelperText">New to Glowth?</span>
+              <button class="auth-toggle" id="authToggle" type="button">Create account</button>
             </div>
 
             <button id="loginButton" class="submit-btn" type="submit">
-              Login now
+              <span id="authButtonText">Login now</span>
               <span class="submit-dot">&gt;</span>
             </button>
 
@@ -621,32 +632,63 @@
     const loginStatus = document.getElementById('loginStatus');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
+    const authEyebrow = document.getElementById('authEyebrow');
+    const authTitle = document.getElementById('authTitle');
+    const authIntro = document.getElementById('authIntro');
+    const authHelperText = document.getElementById('authHelperText');
+    const authToggle = document.getElementById('authToggle');
+    const authButtonText = document.getElementById('authButtonText');
+
+    let authMode = 'login';
+
+    function setAuthMode(mode) {
+      authMode = mode;
+      const isSignup = authMode === 'signup';
+      authEyebrow.textContent = isSignup ? 'Start your glow plan' : 'Welcome back';
+      authTitle.textContent = isSignup ? 'Create account' : 'Log in';
+      authIntro.textContent = isSignup
+        ? 'Create your Glowth account, then complete the skin quiz to personalize your dashboard.'
+        : 'Use your Glowth account to continue where you left off.';
+      authHelperText.textContent = isSignup ? 'Already have an account?' : 'New to Glowth?';
+      authToggle.textContent = isSignup ? 'Log in' : 'Create account';
+      authButtonText.textContent = isSignup ? 'Create account' : 'Login now';
+      passwordInput.autocomplete = isSignup ? 'new-password' : 'current-password';
+      loginStatus.textContent = '';
+      loginStatus.className = 'status';
+    }
+
+    authToggle.addEventListener('click', () => {
+      setAuthMode(authMode === 'login' ? 'signup' : 'login');
+    });
 
     loginForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const email = emailInput.value.trim();
       const password = passwordInput.value;
+      const isSignup = authMode === 'signup';
 
       loginStatus.className = 'status';
-      loginStatus.textContent = 'Signing you in...';
+      loginStatus.textContent = isSignup ? 'Creating your account...' : 'Signing you in...';
       loginButton.disabled = true;
 
-      const result = await login(email, password);
+      const result = isSignup ? await signup(email, password) : await login(email, password);
 
       if (result.success) {
         loginStatus.className = 'status success';
-        loginStatus.textContent = hasCompletedQuiz()
-          ? 'Success. Opening your dashboard...'
-          : 'Success. Opening your skin quiz...';
+        loginStatus.textContent = isSignup
+          ? 'Account created. Opening your skin quiz...'
+          : hasCompletedQuiz()
+            ? 'Success. Opening your dashboard...'
+            : 'Success. Opening your skin quiz...';
         window.setTimeout(() => {
-          window.location.replace(`./${getPostLoginPath()}`);
+          window.location.replace(isSignup ? './quiz.html' : `./${getPostLoginPath()}`);
         }, 250);
         return;
       }
 
       loginStatus.className = 'status error';
-      loginStatus.textContent = result.error || 'We could not sign you in.';
+      loginStatus.textContent = result.error || (isSignup ? 'We could not create your account.' : 'We could not sign you in.');
       loginButton.disabled = false;
     });
   </script>
@@ -667,3 +709,4 @@
 </script>
 </body>
 </html>
+
