@@ -115,7 +115,7 @@ async function findUserIdentityByEmail(email) {
 
 async function loginWithSupabase(email, password) {
   if (typeof supabaseClient === 'undefined' || !supabaseClient.auth?.signInWithPassword) {
-    return null;
+    return { success: false, error: 'Login is not configured yet.' };
   }
 
   const { data, error } = await supabaseClient.auth.signInWithPassword({
@@ -124,7 +124,7 @@ async function loginWithSupabase(email, password) {
   });
 
   if (error) {
-    return null;
+    return { success: false, error: 'Invalid email or password.' };
   }
 
   const user = data?.user;
@@ -218,43 +218,10 @@ async function login(email, password) {
       return supabaseLogin;
     }
 
-    const response = await fetch(getLoginEndpoint(), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-
-    let data;
-    try {
-      data = await response.json();
-    } catch (parseError) {
-      return { success: false, error: 'Login service unavailable. Please try again later.' };
-    }
-
-    if (!response.ok) {
-      if (response.status === 401 || response.status === 403) {
-        return { success: false, error: data.message || 'Invalid email or password' };
-      }
-
-      return { success: false, error: 'Login service unavailable. Please try again later.' };
-    }
-
-    if (!data.success) {
-      return { success: false, error: data.message || 'Login service unavailable. Please try again later.' };
-    }
-
-    if (!isUuid(data.user_id)) {
-      return { success: false, error: 'Login service unavailable. Please try again later.' };
-    }
-
-    localStorage.setItem('auth_token', data.token || `session-${Date.now()}`);
-    rememberUserIdentity({
-      email: data.email || email,
-      userId: data.user_id,
-      name: data.name || buildDisplayName(email)
-    });
-
-    return { success: true };
+    return {
+      success: false,
+      error: supabaseLogin?.error || 'Invalid email or password.'
+    };
   } catch (error) {
     console.error('Login error:', error);
     return { success: false, error: 'Login service unavailable. Please try again later.' };
@@ -317,5 +284,6 @@ async function submitOnboarding(formData) {
   localStorage.setItem('glowth_user_id', data.user_id);
   return data;
 }
+
 
 
