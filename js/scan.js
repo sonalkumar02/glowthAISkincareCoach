@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   let stream = null;
   let capturedImageDataUrl = '';
   let lastFocusedElement = null;
@@ -346,14 +346,14 @@
 
     const lookups = [
       {
-        table: 'profiles',
-        select: 'user_id,email,name',
-        idKey: 'user_id'
-      },
-      {
         table: 'users',
         select: 'id,email,name',
         idKey: 'id'
+      },
+      {
+        table: 'profiles',
+        select: 'user_id,email,name',
+        idKey: 'user_id'
       }
     ];
 
@@ -403,6 +403,41 @@
     return data?.id === userId;
   }
 
+  async function ensurePublicUserForAuth(authUser) {
+    if (!authUser?.id || !isUuid(authUser.id) || typeof supabaseClient === 'undefined') {
+      return null;
+    }
+
+    if (await publicUserExists(authUser.id)) {
+      rememberResolvedUser({
+        id: authUser.id,
+        email: authUser.email,
+        name: authUser.user_metadata?.name
+      });
+      return authUser.id;
+    }
+
+    const fallbackName = authUser.user_metadata?.name || localStorage.getItem('glowth_user_name') || 'Glowth User';
+    const { data, error } = await supabaseClient
+      .from('users')
+      .upsert({
+        id: authUser.id,
+        email: authUser.email || localStorage.getItem('glowth_user_email') || '',
+        name: fallbackName,
+        location: localStorage.getItem('glowth_user_location') || 'India'
+      }, { onConflict: 'id' })
+      .select('id,email,name')
+      .single();
+
+    if (error) {
+      console.warn('[Glowth] users self-heal upsert failed:', error);
+      return null;
+    }
+
+    rememberResolvedUser(data);
+    return data.id;
+  }
+
   async function resolveScanUserId() {
     const storedUserId = getUserId();
     const email = (localStorage.getItem('glowth_user_email') || '').trim().toLowerCase();
@@ -418,16 +453,9 @@
 
     if (typeof supabaseClient !== 'undefined' && supabaseClient.auth?.getUser) {
       const { data: authData } = await supabaseClient.auth.getUser();
-      const authUser = authData?.user;
-
-      if (authUser?.id && isUuid(authUser.id) && await publicUserExists(authUser.id)) {
-        localStorage.setItem('glowth_user_id', authUser.id);
-        if (authUser.email) localStorage.setItem('glowth_user_email', authUser.email);
-        if (authUser.user_metadata?.name) {
-          localStorage.setItem('glowth_user_name', authUser.user_metadata.name);
-        }
-
-        return authUser.id;
+      const ensuredId = await ensurePublicUserForAuth(authData?.user);
+      if (ensuredId) {
+        return ensuredId;
       }
     }
 
@@ -680,3 +708,4 @@ function launchFireCelebration() {
 }
 
 })();
+
