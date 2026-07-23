@@ -308,13 +308,13 @@ function logout() {
   localStorage.removeItem('glowth_user_id');
   localStorage.removeItem('glowth_user_name');
   localStorage.removeItem('glowth_user_email');
-  window.location.replace(getAppPath('index.html'));
+  window.location.replace(getAppPath('login.html'));
 }
 
 // Redirect to login if not authenticated (for dashboard pages)
 function requireAuth() {
   if (!isAuthenticated()) {
-    window.location.replace(getAppPath('index.html'));
+    window.location.replace(getAppPath('login.html'));
   }
 }
 

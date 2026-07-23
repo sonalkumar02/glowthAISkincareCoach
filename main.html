@@ -169,6 +169,83 @@
             backdrop-filter: blur(18px);
         }
 
+        .nav-home-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            color: #4f3fd8;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(105, 82, 255, 0.16);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 10px 24px rgba(97, 74, 210, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-home-pill::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #6b55ff, #91c8ff);
+            box-shadow: 0 0 0 5px rgba(105, 82, 255, 0.12);
+        }
+
+        .nav-home-pill:hover {
+            transform: translateY(-1px);
+            background: #fff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 14px 30px rgba(97, 74, 210, 0.14);
+        }
+
+        .why-choose {
+            padding-top: 28px;
+            padding-bottom: 34px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .why-card {
+            min-height: 214px;
+            padding: 24px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(111, 91, 213, 0.12);
+            box-shadow: 0 20px 44px rgba(103, 83, 177, 0.12);
+        }
+
+        .why-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            margin-bottom: 18px;
+            border-radius: 16px;
+            color: #fff;
+            font: 800 15px/1 "Inter", sans-serif;
+            background: linear-gradient(135deg, #5d43ff, #8ec5ff);
+            box-shadow: 0 14px 26px rgba(93, 67, 255, 0.22);
+        }
+
+        .why-card h3 {
+            margin: 0 0 10px;
+            color: #201a39;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .why-card p {
+            margin: 0;
+            color: #6d6682;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
         .pricing-ref {
             padding-top: 34px;
             padding-bottom: 48px;
@@ -442,6 +519,10 @@
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 640px) {
@@ -493,13 +574,13 @@
         </a>
         <div class="hidden md:flex items-center space-x-8">
             <a href="./about.html" class="text-gray-600 hover:text-gray-900 transition">About</a>
-            <a href="./main.html" class="text-gray-600 hover:text-gray-900 transition">Home</a>
+            <a href="./main.html" class="nav-home-pill">Home</a>
             <a href="./main.html#how" class="text-gray-600 hover:text-gray-900 transition">How it works</a>
             <a href="./contact.html" class="text-gray-600 hover:text-gray-900 transition">Contact</a>
         </div>
         <div>
-            <a href="./contact.html" class="inline-block rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 px-6 py-2 text-sm font-medium text-white shadow-[0_12px_24px_rgba(93,67,255,0.22)] transition hover:-translate-y-0.5 hover:from-indigo-700 hover:to-violet-600">
-                Contact us
+            <a href="./login.html" class="inline-block rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 px-6 py-2 text-sm font-medium text-white shadow-[0_12px_24px_rgba(93,67,255,0.22)] transition hover:-translate-y-0.5 hover:from-indigo-700 hover:to-violet-600">
+                Get Started
             </a>
         </div>
         <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
@@ -511,9 +592,10 @@
     <div id="mobileMenu" class="site-nav-menu hidden md:hidden">
         <div class="px-6 py-4 space-y-3">
             <a href="./about.html" class="block text-gray-600 hover:text-gray-900">About</a>
-            <a href="./main.html" class="block text-gray-600 hover:text-gray-900">Home</a>
+            <a href="./main.html" class="nav-home-pill w-fit">Home</a>
             <a href="./main.html#how" class="block text-gray-600 hover:text-gray-900">How it works</a>
             <a href="./contact.html" class="block text-gray-600 hover:text-gray-900">Contact</a>
+            <a href="./login.html" class="block font-bold text-indigo-600 hover:text-indigo-700">Get Started</a>
         </div>
     </div>
 </header>
@@ -523,7 +605,7 @@
 <div class="eyebrow">Personalized AI Skincare Coach</div>
 <h1><b>Level Up Your Skin<br>with AI Coach</b></h1>
 <p>Go beyond the surface with a deep analysis of your skin. Our AI diagnoses your skin from a photo to create your scientific product and diet plan.</p>
-<a class="primary-btn" href="./contact.html">Contact us <span class="dot">&gt;</span></a>
+<a class="primary-btn" href="./login.html">Get Started <span class="dot">&gt;</span></a>
 <div class="hero-frame">
 <span class="tag tag-red">Redness</span>
 <span class="tag tag-orange">Skin Burn</span>
@@ -545,13 +627,25 @@
 </div>
 </section>
 
+<section class="section why-choose" id="why-choose">
+<div class="section-head"><h2><b>Why Choose Us</b></h2><p>Glowth is built like a personal skin coach, not another static skincare list. It connects scan, routine, products, weather, reminders, and progress in one place.</p></div>
+<div class="why-grid">
+<article class="why-card"><span class="why-icon">AI</span><h3>Face scan to routine</h3><p>Glowth turns a fresh face scan into skin insights, routine direction, and product matches without making users guess what to do next.</p></article>
+<article class="why-card"><span class="why-icon">UV</span><h3>Environment aware care</h3><p>Weather, humidity, UV, location, and daily context can influence recommendations so routines feel useful in real life, not just on paper.</p></article>
+<article class="why-card"><span class="why-icon">IN</span><h3>Ingredient safety logic</h3><p>Product suggestions stay connected to skin type, concerns, goals, and ingredient fit so users avoid random trial-and-error purchases.</p></article>
+<article class="why-card"><span class="why-icon">7D</span><h3>Streak and progress system</h3><p>Users can choose scan frequency, track weekly progress, and keep motivation alive with a streak flow built into the dashboard.</p></article>
+<article class="why-card"><span class="why-icon">RT</span><h3>Adaptive routine builder</h3><p>Morning and evening routines can change with scan results, lifestyle, and product matches instead of staying fixed forever.</p></article>
+<article class="why-card"><span class="why-icon">HI</span><h3>Hinglish reminder voice</h3><p>Glowth reminders are designed to feel friendly, witty, and personal, closer to a useful nudge than a boring app notification.</p></article>
+</div>
+</section>
+
 <section class="section pricing-ref" id="pricing">
 <div class="section-head"><h2>Flexible pricing plans</h2><p>Choose a plan that grows with you. Start for free and upgrade anytime for more features and support.</p></div>
 <div class="toggle"><span>Monthly</span><span class="switch"></span><span>Yearly</span><span class="discount">27% OFF</span></div>
 <div class="pricing-grid">
-<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">Starter plan</h3><p class="pricing-copy">For beginners testing the water</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">0</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-dark" href="./contact.html">Contact us</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li>1 AI Skin Scan / Week</li><li>Basic Routine Recommendation</li><li>Ingredient Safety Checker</li><li>Community Forum Access</li><li class="muted">Daily Progress Tracking</li><li class="muted">Real-time Weather/UV Sync</li></ul></div></div></article>
-<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">Glowth Pro</h3><p class="pricing-copy">For daily users seeking results</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">99</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-featured" href="./contact.html">Contact us</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li><strong>Unlimited AI Skin Scans</strong></li><li><strong>Real-time Weather/UV Sync</strong></li><li><strong>Daily Progress Tracking</strong></li><li><strong>Priority AI Processing</strong></li><li><strong>24/7 Priority Support</strong></li><li class="muted">Dermatologist 1-on-1 Chat</li></ul></div></div></article>
-<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">The Expert</h3><p class="pricing-copy">For those wanting doctor advice</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">499</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-dark" href="./contact.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li>Everything in Pro +</li><li><strong>Dermatologist 1-on-1 Chat</strong></li><li>Internal Health &amp; Diet Plan</li><li>Family Sharing (Up to 4)</li><li>Monthly Medical Report</li><li>24/7 priority support</li></ul></div></div></article>
+<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">Starter plan</h3><p class="pricing-copy">For beginners testing the water</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">0</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-dark" href="./login.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li>1 AI Skin Scan / Week</li><li>Basic Routine Recommendation</li><li>Ingredient Safety Checker</li><li>Community Forum Access</li><li class="muted">Daily Progress Tracking</li><li class="muted">Real-time Weather/UV Sync</li></ul></div></div></article>
+<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">Glowth Pro</h3><p class="pricing-copy">For daily users seeking results</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">99</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-featured" href="./login.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li><strong>Unlimited AI Skin Scans</strong></li><li><strong>Real-time Weather/UV Sync</strong></li><li><strong>Daily Progress Tracking</strong></li><li><strong>Priority AI Processing</strong></li><li><strong>24/7 Priority Support</strong></li><li class="muted">Dermatologist 1-on-1 Chat</li></ul></div></div></article>
+<article class="pricing-card"><div class="pricing-card-inner"><div class="pricing-top"><div class="pricing-plan-row"><div><h3 class="pricing-name">The Expert</h3><p class="pricing-copy">For those wanting doctor advice</p></div><div class="pricing-price"><span class="symbol">&#8377;</span><span class="amount">499</span><span class="unit">/month</span></div></div><a class="pricing-button pricing-button-dark" href="./login.html">Get Started</a></div><div class="pricing-features"><p class="pricing-label">Included features:</p><ul class="pricing-list"><li>Everything in Pro +</li><li><strong>Dermatologist 1-on-1 Chat</strong></li><li>Internal Health &amp; Diet Plan</li><li>Family Sharing (Up to 4)</li><li>Monthly Medical Report</li><li>24/7 priority support</li></ul></div></div></article>
 </div>
 </section>
 
