@@ -26,6 +26,3 @@ Daily Reminders*.json
 Environment Sync*.json
 *n8n*.json
 workflow-exports/
-
-# Old internal deployment notes contain backend setup details
-/README.md
